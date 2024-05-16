@@ -3,33 +3,31 @@
 <mapper namespace="com.example.sakezan.repository.ItemsMapper">
 	<!-- 全件検索 -->
 	<select id="selectAll" resultType="com.example.sakezan.entity.Item">
-		SELECT id, drink, code, price, stock, ideal_stock_weekday, ideal_stock_weekend,
-		 order_date, drink_category FROM Items
+		SELECT * FROM Items
 	</select>
 	<!-- 1件検索 -->
-	<select id="selectById" resultType="com.example.sakezan.entity.Item">
-		SELECT id, drink, code, price, stock, ideal_stock_weekday, ideal_stock_weekend,
-      	order_date, drink_category 
+	<select id="selectByItem_code" resultType="com.example.sakezan.entity.Item">
+		SELECT * 
     	FROM items 
-    	WHERE id = #{id}
+    	WHERE item_code = #{item_code}
 	</select>
 	<!-- 登録 -->
 	<insert id="insert">
-		INSERT INTO items (drink, code, price, stock, ideal_stock_weekday, ideal_stock_weekend,
-      	order_date, drink_category) 
-    	VALUES (#{drink}, #{code}, #{price}, #{stock}, #{ideal_stock_weekday}, 
-      	#{ideal_stock_weekend}, CURRENT_TIMESTAMP, #{drink_category})
+		INSERT INTO items (item_code, drink_name, specification, price, stock, order_quantity, ideal_stock_weekday, 
+		ideal_stock_weekend, drink_category) 
+    	VALUES ( #{item_code}, #{drink_name}, #{specification}, #{price}, #{stock}, #{order_quantity}, 
+    	#{ideal_stock_weekday}, #{ideal_stock_weekend}, #{drink_category})
 	</insert>
 	<!-- 更新 -->
 	<update id="update">
 		UPDATE items 
-    	SET drink = #{drink}, code = #{code}, price = #{price}, stock = #{stock}, 
-      	ideal_stock_weekday = #{ideal_stock_weekday}, ideal_stock_weekend = #{ideal_stock_weekend}, 
-      	order_date = CURRENT_TIMESTAMP, drink_category = #{drink_category} 
-    	WHERE id = #{id}
+    	SET drink_name =#{drink_name}, item_code = #{item_code},   price = #{price}, stock = #{stock}, 
+      	order_quantity = #{order_quantity}, ideal_stock_weekday = #{ideal_stock_weekday}, ideal_stock_weekend = #{ideal_stock_weekend}, 
+      	 drink_category = #{drink_category} 
+    	WHERE item_code = #{item_code}
 	</update>
 	<!-- 削除 -->
 	<delete id="delete">
-		DELETE FROM items WHERE id = #{id}
+		DELETE FROM items WHERE item_code = #{item_code}
 	</delete>
 </mapper>

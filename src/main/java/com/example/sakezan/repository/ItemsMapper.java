@@ -19,7 +19,7 @@ public interface ItemsMapper {
 	/**
 	 * 指定されたIDに対応する「ドリンク」を取得する
 	 */
-	Item selectById(@Param("id") Integer id);
+	Item selectByItem_code(@Param("item_code") String item_code);
 	
 	/**
 	 * 「ドリンク」を登録する
@@ -34,6 +34,6 @@ public interface ItemsMapper {
 	/**
 	 * 指定されたIDの「ドリンク」を削除する
 	 */
-	void delete(@Param("id") Integer id);
+	void delete(@Param("item_code") String item_code);
 	
 }

@@ -1,10 +1,6 @@
 --1件目
-INSERT INTO items (drink, code, price, stock, ideal_stock_weekday, ideal_stock_weekend, order_date, drink_category) VALUES
-('アサヒ瓶ビール', '00001', 750, 0, 8, 8, CURRENT_TIMESTAMP, 'ALCOHOL');
-
---2件目
-INSERT INTO items (drink, code, price, stock, ideal_stock_weekday, ideal_stock_weekend, order_date, drink_category) VALUES
-('コカ・コーラ瓶', '10000', 88, 0, 12, 21, CURRENT_TIMESTAMP, 'SOFT_DRINK');
+INSERT INTO Items (item_code, drink_name, specification, price, stock, ideal_stock_weekday, ideal_stock_weekend, drink_category)
+VALUES ('000001', '商品A', '500ml', 500, 10, 15, 20, 'ALCOHOL');
 
 --認証テーブルへのダミーデータの追加
 INSERT INTO authentications (username, password, authority,displayname) VALUES 
