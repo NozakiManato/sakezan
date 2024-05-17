@@ -14,16 +14,22 @@ public interface ItemService {
 	List<Item> findAllItem();
 	
 	/**
-	 * 指定されたIDの「ドリンク」を検索する
+	 * 指定されたItem_codeの「ドリンク」を検索する
 	 */
-	Item findByIdItem(Integer id);
+	Item findByIdItem(String item_code);
 	
 	/**
-	 * 「ドリンク」を登録する
+	 * 「ドリンク」を新規登録する
 	 */
 	void inserItem(Item item);
 	
 	/**
-	 * 
+	 * 「ドリンク」を更新する
 	 */
+	void updateItem(Item item);
+	
+	/**
+	 * 指定されたItem_codeの「ドリンク」を削除する
+	 */
+	void deleteItem(String item_code);
 }

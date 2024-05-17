@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Item詳細</title>
+</head>
+<body>
+	<h2>Item</h2>
+	<table border="1">
+		<tr>
+			<th>Code</th>
+			<td th:text="${items.item_code}"></td>
+		</tr>
+		<tr>
+			<th>名前</th>
+			<td th:text="${items.drink_name}"></td>
+		</tr>
+		<tr>
+			<th>規格</th>
+			<td th:text="${items.specification}"></td>			
+		</tr>
+		<tr>
+			<th>値段</th>
+			<td th:text="${items.price}"></td>
+		</tr>
+		<tr>
+			<th>在庫</th>
+			<td th:text="${items.stock}"></td>		
+		</tr>
+		<tr>
+			<th>発注数</th>
+			<td th:text="${items.order_quantity}"> </td>		
+		</tr>
+		<tr>
+			<th>平日理想在庫数</th>
+			<td th:text="${items.ideal_stock_weekday}"></td>		
+		</tr>
+		<tr>
+			<th>休日理想在庫数</th>
+			<td th:text="${items.ideal_stock_weekend}"></td>		
+		</tr>
+		<tr>
+			<th>商品カテゴリー</th>
+			<td th:text="${items.drink_category}"></td>		
+		</tr>
+	</table>
+	<a th:href="@{/items}">Item一覧</a>
+</body>
+</html>

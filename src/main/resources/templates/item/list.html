@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Item一覧</title>
+</head>
+<body>
+	<h2>Item一覧</h2>
+	<!-- Flashメッセージ -->
+	<p th:if="${errorMessage}"
+		th:text="${errorMessage}" style="color: red;">
+		エラーメッセージ
+	</p>
+	<table border="1" width="300">
+		<thead>
+			<tr>
+				<th>商品コード</th>
+				<th>名前</th>
+				<th>詳細</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item :${items}">
+				<td th:text="${item.item_code}"></td>
+				<td	th:text="${item.drink_name}"></td>
+				<td>
+					<a th:href="@{/items/{item_code}(item_code=${item.item_code})}">
+						詳細
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
