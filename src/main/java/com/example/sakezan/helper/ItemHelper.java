@@ -39,11 +39,5 @@ public class ItemHelper {
 		form.setIdeal_stock_weekend(item.getIdeal_stock_weekend());
 		form.setDrink_category(item.getDrink_category());
 		return form;
-		
-		
-		
-		
-		
-		
 	}
 }

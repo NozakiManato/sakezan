@@ -21,7 +21,7 @@ public interface ItemService {
 	/**
 	 * 「ドリンク」を新規登録する
 	 */
-	void inserItem(Item item);
+	void insertItem(Item item);
 	
 	/**
 	 * 「ドリンク」を更新する

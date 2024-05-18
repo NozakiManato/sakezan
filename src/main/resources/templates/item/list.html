@@ -7,6 +7,10 @@
 <body>
 	<h2>Item一覧</h2>
 	<!-- Flashメッセージ -->
+	<p th:if="${message}" th:text="${message}"
+	style="color: blue;">
+		完了メッセージ
+	</p>
 	<p th:if="${errorMessage}"
 		th:text="${errorMessage}" style="color: red;">
 		エラーメッセージ
@@ -31,5 +35,6 @@
 			</tr>
 		</tbody>
 	</table>
+	<a th:href="@{/items/form}">新規登録</a>
 </body>
 </html>

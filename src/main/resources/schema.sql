@@ -10,7 +10,7 @@ CREATE TYPE drink_category AS ENUM ('ALCOHOL', 'SOFT_DRINK');
 --お酒の商品を格納するテーブル
 CREATE TABLE items (
 	--code(お酒の商品コード)
-    item_code VARCHAR(6) PRIMARY KEY NOT NULL,
+    item_code CHAR(6) PRIMARY KEY NOT NULL,
     --name(お酒の名前):NULL不許可
     drink_name VARCHAR(100) NOT NULL,
     --specifacation(お酒のサイズ)

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Itemフォーム</title>
+</head>
+<body>
+	<!-- タイトル：登録 or 編集 -->
+	<h2 th:if="${itemForm.isNew}">新規ドリンク登録</h2>
+	<h2 th:unless="${itemForm.isNew}">ドリンク編集</h2>
+	<!-- アクション：登録 or 編集 -->
+	<form th:action="${itemForm.isNew} ? @{/items/save} : @{/items/update}"
+		th:object="${itemForm}" method="post">
+		<!--item_codeは更新時に必要なため、hiddenで隠す-->
+		<table>
+			<tr>
+				<th>ドリンクコード</th>
+				<td><input type="text" th:field="*{item_code}"/></td>
+			</tr>
+			<tr>
+				<th>ドリンクの名前</th>
+				<td>
+					<input type="text" th:field="*{drink_name}" />
+				</td>
+			</tr>
+			<tr>
+				<th>ドリンクのサイズ</th>
+				<td>
+					<input type="text" th:field="*{specification}"/>
+				</td>
+			</tr>
+			<tr>
+				<th>お酒の値段</th>
+				<td>
+					<input type="text" th:field="*{price}" />
+				</td>
+			</tr>
+			<tr>
+				<th>お酒の在庫</th>
+				<td>
+					<input type="text" th:field="*{stock}" />
+				</td>
+			</tr>
+			<tr>
+				<th>お酒の発注数</th>
+				<td>
+					<input type="text" th:field="*{order_quantity}"/>
+				</td>
+			</tr>
+			<tr>
+				<th>平日理想在庫数</th>
+				<td><input type="text" th:field="*{ideal_stock_weekday}" /></td>
+			</tr>
+			<tr>
+				<th>休日理想在庫数</th>
+				<td><input type="text" th:field="*{ideal_stock_weekend}" /></td>
+			</tr>
+			<tr>
+				<th>商品のカテゴリー</th>
+				<td><input type="text" th:field="*{drink_category}"/></td>
+			</tr>
+		</table>
+		<!-- ボタン：登録 or 編集 -->
+		<input th:if="${itemForm.isNew}" type="submit" value="登録" />
+		<input th:unless="${itemForm.isNew}" type="submit" value="更新" />
+	</form>
+	<a th:href="@{/items}">戻る</a>
+</body>
+</html>

@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void inserItem(Item item) {
+	public void insertItem(Item item) {
 		// TODO 自動生成されたメソッド・スタブ
 		itemsMapper.insert(item);
 	}

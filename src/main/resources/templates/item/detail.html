@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Item詳細</title>
@@ -9,41 +9,45 @@
 	<table border="1">
 		<tr>
 			<th>Code</th>
-			<td th:text="${items.item_code}"></td>
+			<td th:text="${item.item_code}"></td>
 		</tr>
 		<tr>
 			<th>名前</th>
-			<td th:text="${items.drink_name}"></td>
+			<td th:text="${item.drink_name}"></td>
 		</tr>
 		<tr>
 			<th>規格</th>
-			<td th:text="${items.specification}"></td>			
+			<td th:text="${item.specification}"></td>			
 		</tr>
 		<tr>
 			<th>値段</th>
-			<td th:text="${items.price}"></td>
+			<td th:text="${item.price}"></td>
 		</tr>
 		<tr>
 			<th>在庫</th>
-			<td th:text="${items.stock}"></td>		
+			<td th:text="${item.stock}"></td>		
 		</tr>
 		<tr>
 			<th>発注数</th>
-			<td th:text="${items.order_quantity}"> </td>		
+			<td th:text="${item.order_quantity}"> </td>		
 		</tr>
 		<tr>
 			<th>平日理想在庫数</th>
-			<td th:text="${items.ideal_stock_weekday}"></td>		
+			<td th:text="${item.ideal_stock_weekday}"></td>		
 		</tr>
 		<tr>
 			<th>休日理想在庫数</th>
-			<td th:text="${items.ideal_stock_weekend}"></td>		
+			<td th:text="${item.ideal_stock_weekend}"></td>		
 		</tr>
 		<tr>
 			<th>商品カテゴリー</th>
-			<td th:text="${items.drink_category}"></td>		
+			<td th:text="${item.drink_category}"></td>		
 		</tr>
 	</table>
+	<a th:href="@{/items/edit/{item_code}(item_code=${item.item_code})}">編集</a>
+	<form th:action="@{/items/delete/{item_code}(item_code=${item.item_code})}" method="post">
+		<input type="submit" value="削除"/>
+	</form>
 	<a th:href="@{/items}">Item一覧</a>
 </body>
 </html>
