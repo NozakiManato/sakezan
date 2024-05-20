@@ -2,6 +2,8 @@ package com.example.sakezan.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +17,6 @@ import com.example.sakezan.helper.ItemHelper;
 import com.example.sakezan.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
-
-
-
-
 
 /**
  * Item: コントローラ
@@ -69,9 +67,16 @@ public class ItemController {
 	 * 新規登録を実行する
 	 */
 	@PostMapping("/save")
-	public String create(ItemForm form,
+	public String create(@Validated ItemForm form,
+			BindingResult bindingResult,
 			RedirectAttributes attributes) {
-		//TODO: process POST request
+		//=== バリデーションチェック ===
+		//入力チェックNG:入力画面に表示する
+		if (bindingResult.hasErrors()) {
+			//新規登録画面の設定
+			form.setIsNew(true);
+			return "item/form";
+		}
 		//エンティティの変換
 		Item Item = ItemHelper.convertItem(form);
 		//登録実行
@@ -108,8 +113,16 @@ public class ItemController {
 	 * 「ドリンク」の情報を更新する
 	 */
 	@PostMapping("/update")
-	public String update(ItemForm form,
+	public String update(@Validated ItemForm form,
+			BindingResult bindingResult,
 			RedirectAttributes attributes) {
+		//=== バリデーションチェック ===
+		//入力チェックNG:入力画面に表示する
+		if (bindingResult.hasErrors()) {
+			//更新画面の設定
+			form.setIsNew(false);
+			return "item/form";
+		}
 		//エンティティへの変換
 		Item Item = ItemHelper.convertItem(form);
 		//更新処理

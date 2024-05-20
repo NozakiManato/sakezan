@@ -2,6 +2,11 @@ package com.example.sakezan.form;
 
 import com.example.sakezan.entity.DrinkCategory;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,23 +18,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemForm {
-	/** お酒の商品コード */
+	/** ドリンクの商品コード */
+	//item_codeではなく、drink_codeに変える
+	@Pattern(regexp = "\\d{6}", message = "商品コードは６文字の数字でなければなりません")
 	private String item_code;
-	/** お酒の名前 */
+	/** ドリンクの名前 */
+	@NotBlank(message = "ドリンク名は必須です")
 	private String drink_name;
-	/**  お酒のサイズ */
+	/**  ドリンクのサイズ */
+	@NotBlank(message = "サイズは必須です")
 	private String specification;
-	/** お酒の値段 */
+	/** ドリンクの単価 */
+	@NotNull(message = "単価は必須です")
 	private Integer price;
-	/** お酒の在庫 */
+	/** ドリンクの在庫 */
+	@NotNull(message = "在庫は必須です")
 	private Double stock;
-	/** お酒の発注数 */
+	/** ドリンクの発注数 */
 	private Integer order_quantity = 0;
 	/** 平日の理想的な在庫数 */
 	private Double ideal_stock_weekday;
 	/** 週末の理想的な在庫数 */
 	private Double ideal_stock_weekend;
-	/** 商品のカテゴリー */
+	/** ドリンクのカテゴリー */
+	@Enumerated(EnumType.STRING)
+    @NotNull(message = "種類は必須です")
 	private DrinkCategory drink_category;
 	/** 新規判定 */
 	private Boolean isNew;
