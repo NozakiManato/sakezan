@@ -39,12 +39,12 @@ public class ItemController {
 	}
 	
 	/**
-	 * 指定されたItem_codeの「すること」の詳細を表示する
+	 * 指定されたItem_codeの「ドリンク」の詳細を表示する
 	 */
 	@GetMapping("/{item_code}")
 	public String detail(@PathVariable String item_code, Model model,
 			RedirectAttributes attributes) {
-		//「ドリンク」Item_codeに対応する「ドリンク」情報を取得
+		//Item_codeに対応する「ドリンク」情報を取得
 		Item item = itemService.findByIdItem(item_code);
 		if (item != null) {
 			model.addAttribute("item", itemService.findByIdItem(item_code));
@@ -52,7 +52,7 @@ public class ItemController {
 		} else {
 			attributes.addFlashAttribute("errorMessage", "対象データがありません");
 		}
-		return "redirect/items";
+		return "redirect:/items";
 	}
 	
 	//=== 登録・更新処理追加 ===

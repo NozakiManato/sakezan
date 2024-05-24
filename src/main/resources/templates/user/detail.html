@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員の詳細</title>
+</head>
+<body>
+	<h2>従業員</h2>
+	<table border="1">
+		<tr>
+			<th>名前</th>
+			<td th:text="${user.displayname}"></td>
+		</tr>
+		<tr>
+			<th>ユーザー名</th>
+			<td th:text="${user.username}"></td>
+		</tr>
+		<tr>
+			<th>パスワード</th>
+			<td th:text="${user.password}"></td>
+		</tr>
+		<tr>
+			<th>権限</th>
+			<td th:text="${user.authority}"></td>
+		</tr>
+	</table>
+	<a th:href="@{/users/edit/{username}(username=${user.username})}">編集</a>
+	<form th:action="@{/users/delete/{username}(username=${user.username})}" method="post">
+		<input type="submit" value="削除"/>
+	</form>
+	<a th:href="@{/users}">従業員一覧</a>
+</body>
+</html>

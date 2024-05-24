@@ -3,5 +3,6 @@
 <configuration>
     <typeHandlers>
         <typeHandler handler="com.example.sakezan.typehandler.DrinkCategoryTypeHandler" javaType="com.example.sakezan.entity.DrinkCategory"/>
+        <typeHandler handler="com.example.sakezan.typehandler.RoleTypeHandler" javaType="com.example.sakezan.entity.Role"/>
     </typeHandlers>
 </configuration>

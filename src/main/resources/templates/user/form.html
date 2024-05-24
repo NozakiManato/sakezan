@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>従業員フォーム</title>
+</head>
+<body>
+	<!--タイトル：登録 or 編集-->
+	<h2 th:if="${authenticationForm.isNew}">新規従業員登録</h2>
+	<h2 th:unless="${authenticationForm.isNew}">従業員編集</h2>
+	<!-- アクション：登録 or 編集 -->
+	<form th:action="${authenticationForm.isNew} ? @{/users/save} : @{/users/update}"
+		th:object="${authenticationForm}" method="post">
+		<table>
+			<tr>
+				<th>名前</th>
+				<td><input type="text" th:field="*{displayname}">
+					<span th:if="${#fields.hasErrors('displayname')}"
+						th:errors="*{displayname}" style="color: red;">
+						エラーがあれば表示
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<th>ユーザーネーム</th>
+				<td><input type="text" th:field="*{usernameInput}">
+					<span th:if="${#fields.hasErrors('usernameInput')}"
+					th:errors="*{usernameInput}" style="color: red;">
+						エラーがあれば表示
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="password" th:field="*{passwordInput}">
+					<span th:if="${#fields.hasErrors('passwordInput')}"
+					th:errors="*{passwordInput}" style="color: red;">
+						エラーがあれば表示
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<th>権限</th>
+				<td>
+					<select id="authority" th:field="*{authority}">
+						<option value="USER" th:text="#{USER}">USER</option>
+						<option value="ADMIN" th:text="#{ADMIN}">ADMIN</option>
+					</select>
+					<span th:if="${#fields.hasErrors('authority')}"
+						th:errors="*{authority}" style="color: red;">
+						エラーがあれば表示
+					</span>
+				</td>
+			</tr>
+		</table>
+	<!--ボタン：登録 or 編集-->
+	<input th:if="${authenticationForm.isNew}" type="submit" value="登録" />
+	<input th:unless="${authenticationForm.isNew}" type="submit" value="更新" />
+	</form>
+	<a th:href="@{/users}">戻る</a>
+</body>
+</html>

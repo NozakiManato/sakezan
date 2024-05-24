@@ -8,14 +8,16 @@
 <body>
 	<h2>メニュ－画面</h2>
 	<hr>
-	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/todos}">
+	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/items}">
 		ToDo一覧へ
+	</a>
+	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}">
+		従業員一覧
 	</a>
 	<br>
 	<div sec:authorize="hasAuthority('USER')">
 		【一般権限で表示される部分】
 	</div>
-	<a href="@{/todos}">ToDo一覧へ</a>
 	<div sec:authentication="name">
 		ログイン情報のname値に書き換わる
 	</div>

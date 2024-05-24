@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakezan.repository.AuthenticationMapper">
+	<!--すべてのユーザーを検索-->
+	<select id="selectAll" resultType="com.example.sakezan.entity.Authentication">
+		SELECT * FROM authentications
+	</select>
+	
 	<!-- ユーザー名で認証情報を検索 -->
 	<select id="selectByUsername" resultType="com.example.sakezan.entity.Authentication">
-		SELECT username, password, authority, displayname FROM 
-		authentications WHERE username = #{username}
+		SELECT * 
+		FROM authentications 
+		WHERE username = #{username}
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO authentications (username, password,authority, displayname)
+		VALUES (#{username}, #{password}, #{authority, typeHandler=com.example.sakezan.typehandler.RoleTypeHandler}, #{displayname})
+	</insert>
+	
+	<update id="update">
+		UPDATE authentications
+        SET username = #{username}, password = #{password}, displayname = #{displayname},
+        authority= #{authority, typeHandler=com.example.sakezan.typehandler.RoleTypeHandler}
+        WHERE username = #{username}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM authentications WHERE username = #{username}
+	</delete>
 </mapper>

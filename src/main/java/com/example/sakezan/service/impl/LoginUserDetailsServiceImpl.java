@@ -62,5 +62,4 @@ public class LoginUserDetailsServiceImpl implements UserDetailsService {
 		}
 		return authorities;
 	}
-	
 }
