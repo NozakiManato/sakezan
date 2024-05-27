@@ -22,12 +22,10 @@ public class Item {
 	private Integer price;
 	/** お酒の在庫 */
 	private Double stock;
-	/** お酒の発注数 */
-	private Integer order_quantity = 0;
 	/** 平日の理想的な在庫数 */
-	private Double ideal_stock_weekday;
+	private Integer ideal_stock_weekday;
 	/** 週末の理想的な在庫数 */
-	private Double ideal_stock_weekend;
+	private Integer ideal_stock_weekend;
 	/** 商品のカテゴリー */
 	private DrinkCategory drink_category;
 }

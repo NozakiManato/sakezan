@@ -33,13 +33,11 @@ public class ItemForm {
 	private Integer price;
 	/** ドリンクの在庫 */
 	@NotNull(message = "在庫は必須です")
-	private Double stock;
-	/** ドリンクの発注数 */
-	private Integer order_quantity = 0;
+	private Double stock = 0.0;
 	/** 平日の理想的な在庫数 */
-	private Double ideal_stock_weekday;
+	private Integer ideal_stock_weekday;
 	/** 週末の理想的な在庫数 */
-	private Double ideal_stock_weekend;
+	private Integer ideal_stock_weekend;
 	/** ドリンクのカテゴリー */
 	@Enumerated(EnumType.STRING)
     @NotNull(message = "種類は必須です")

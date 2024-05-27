@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.example.sakezan.entity.Authentication;
 
 @Mapper
-public interface AuthenticationMapper {
+public interface AuthenticationsMapper {
 	
 	/**
 	 * すべてのユーザーを取得する

@@ -2,30 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ログイン</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h2>ログイン画面</h2>
-	<!-- エラー表示 -->
-	<div th:if="${param.error}">
-		<p style="color: red;">usernameまたはpasswordが違います</p>
-	</div>
-	<!-- ログアウト表示 -->
-	<div th:if="${param.logout}">
-		<p style="color: blue;">ログアウトしました</p>
-	</div>
-	<form th:action="@{/authentication}" method="post" th:object="${loginForm}">
-		<div><!-- ユーザー名 -->
-			<label for="usernameInput">username</label>
-			<input type="text" th:field="*{usernameInput}">
-		</div>
-		<div><!-- パスワード -->
-			<label for="passwordInput">password</label>
-			<input type="password" th:field="*{passwordInput}">
-		</div>
-		<div>
-			<input type="submit" value="login">
-		</div>
-	</form>
+	<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h3>ログイン</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/authentication}" method="post" th:object="${loginForm}">
+							<!-- エラー表示 -->
+							<div th:if="${param.error}">
+							<p style="color: red;">ユーザー名またはパスワードが違います</p>
+							</div>
+							<!-- ログアウト表示 -->
+							<div th:if="${param.logout}">
+							<p style="color: #007bff;">ログアウトしました</p>
+							</div>
+							
+							<!-- ユーザー名 -->
+                            <div class="form-group">
+                                <label for="usernameInput">ユーザー名</label>
+                                <input type="text" class="form-control"  th:field="*{usernameInput}" placeholder="ユーザー名を入力">
+                            </div>
+							<!-- パスワード -->
+                            <div class="form-group">
+                                <label for="passwordInput">パスワード</label>
+                                <input type="password" class="form-control" th:field="*{passwordInput}"  placeholder="パスワードを入力">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

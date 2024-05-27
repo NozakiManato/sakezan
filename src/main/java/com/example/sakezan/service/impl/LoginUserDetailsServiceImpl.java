@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.example.sakezan.entity.Authentication;
 import com.example.sakezan.entity.LoginUser;
 import com.example.sakezan.entity.Role;
-import com.example.sakezan.repository.AuthenticationMapper;
+import com.example.sakezan.repository.AuthenticationsMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,12 +25,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginUserDetailsServiceImpl implements UserDetailsService {
 	/** DI */
-	private final AuthenticationMapper authenticationMapper;
+	private final AuthenticationsMapper authenticationsMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
 		//「認証テーブル」からデータを取得
-		Authentication authentication = authenticationMapper.selectByUsername(username);
+		Authentication authentication = authenticationsMapper.selectByUsername(username);
 		
 		//対象データがあれば、UserDetailsの実装クラスを返す
 		if (authentication != null) {

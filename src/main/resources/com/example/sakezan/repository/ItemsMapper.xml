@@ -13,17 +13,17 @@
 	</select>
 	<!-- 登録 -->
 	<insert id="insert">
-		INSERT INTO items (item_code, drink_name, specification, price, stock, order_quantity, ideal_stock_weekday, 
+		INSERT INTO items (item_code, drink_name, specification, price, stock, ideal_stock_weekday, 
 		ideal_stock_weekend, drink_category) 
-    	VALUES ( #{item_code}, #{drink_name}, #{specification}, #{price}, #{stock}, #{order_quantity}, 
+    	VALUES ( #{item_code}, #{drink_name}, #{specification}, #{price}, #{stock}, 
     	#{ideal_stock_weekday}, #{ideal_stock_weekend}, #{drink_category, typeHandler=com.example.sakezan.typehandler.DrinkCategoryTypeHandler})
 	</insert>
 	<!-- 更新 -->
 	<update id="update" parameterType="com.example.sakezan.entity.Item">
 		UPDATE items 
     	SET drink_name =#{drink_name}, item_code = #{item_code},   price = #{price}, stock = #{stock}, 
-      	order_quantity = #{order_quantity}, ideal_stock_weekday = #{ideal_stock_weekday}, ideal_stock_weekend = #{ideal_stock_weekend}, 
-      	 drink_category = #{drink_category, typeHandler=com.example.sakezan.typehandler.DrinkCategoryTypeHandler} 
+      	ideal_stock_weekday = #{ideal_stock_weekday}, ideal_stock_weekend = #{ideal_stock_weekend}, 
+      	drink_category = #{drink_category, typeHandler=com.example.sakezan.typehandler.DrinkCategoryTypeHandler} 
     	WHERE item_code = #{item_code}
 	</update>
 	<!-- 削除 -->

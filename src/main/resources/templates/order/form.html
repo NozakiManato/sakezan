@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>発注フォーム</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mt-5">発注フォーム</h2>
+				<form th:action="@{/placeOrder}" method="post">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>商品名</th>
+								<th>規格</th>
+								<th>在庫</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="item :${items}">
+								<td th:text="${item.drink_name}"></td>
+								<td th:text="${item.specification}"></td>
+								<td>
+									<input type="number" name="Stocks[__${item.item_code}__]" class="form-control" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="submit" class="btn btn-primary">確認画面へ</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
