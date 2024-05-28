@@ -18,7 +18,6 @@ public class SecurityConfig {
 			//「/login」へのアクセスは認証を必要としない
 			.requestMatchers("/login").permitAll()
 			//【管理者権限設定】url:/items/**は管理者しかアクセスできない
-			.requestMatchers("/items/**").hasAuthority("ADMIN")
 			.requestMatchers("/users/**").hasAuthority("ADMIN")
 			//その他のリクエストは認証が必要
 			.anyRequest().authenticated())
