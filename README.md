@@ -1,2 +1,4 @@
 TODO
-ユーザーのパスワードがCRUD処理の時にハッシュ化できていない
+名前のリファクタリング
+item->drink
+item_code->itemCodeなど
