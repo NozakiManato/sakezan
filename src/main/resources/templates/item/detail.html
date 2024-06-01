@@ -2,48 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ドリンク詳細</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h2>ドリンク</h2>
-	<table border="1">
-		<tr>
-			<th>Code</th>
-			<td th:text="${item.item_code}"></td>
-		</tr>
-		<tr>
-			<th>名前</th>
-			<td th:text="${item.drink_name}"></td>
-		</tr>
-		<tr>
-			<th>規格</th>
-			<td th:text="${item.specification}"></td>			
-		</tr>
-		<tr>
-			<th>値段</th>
-			<td th:text="${item.price}"></td>
-		</tr>
-		<tr>
-			<th>在庫</th>
-			<td th:text="${item.stock}"></td>		
-		</tr>
-		<tr>
-			<th>平日理想在庫数</th>
-			<td th:text="${item.ideal_stock_weekday}"></td>		
-		</tr>
-		<tr>
-			<th>休日理想在庫数</th>
-			<td th:text="${item.ideal_stock_weekend}"></td>		
-		</tr>
-		<tr>
-			<th>商品カテゴリー</th>
-			<td th:text="${item.drink_category}"></td>		
-		</tr>
-	</table>
-	<a th:href="@{/items/edit/{item_code}(item_code=${item.item_code})}">編集</a>
-	<form th:action="@{/items/delete/{item_code}(item_code=${item.item_code})}" method="post">
-		<input type="submit" value="削除"/>
-	</form>
-	<a th:href="@{/items}">Item一覧</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mt-5">ドリンク</h2>
+				<table class="table table-striped">
+					<tr>
+						<th>Code</th>
+						<td th:text="${item.item_code}"></td>
+					</tr>
+					<tr>
+						<th>名前</th>
+						<td th:text="${item.drink_name}"></td>
+					</tr>
+					<tr>
+						<th>規格</th>
+						<td th:text="${item.specification}"></td>			
+					</tr>
+					<tr>
+						<th>値段</th>
+						<td th:text="${item.price}"></td>
+					</tr>
+					<tr>
+						<th>在庫</th>
+						<td th:text="${item.stock}"></td>		
+					</tr>
+					<tr>
+						<th>平日理想在庫数</th>
+						<td th:text="${item.ideal_stock_weekday}"></td>		
+					</tr>
+					<tr>
+						<th>休日理想在庫数</th>
+						<td th:text="${item.ideal_stock_weekend}"></td>		
+					</tr>
+					<tr>
+						<th>商品カテゴリー</th>
+						<td th:text="${item.drink_category}"></td>		
+					</tr>
+				</table>
+				<a th:href="@{/items/edit/{item_code}(item_code=${item.item_code})}" class="link-primary">編集</a>
+				<form th:action="@{/items/delete/{item_code}(item_code=${item.item_code})}" method="post">
+					<input type="submit" value="削除" class="btn btn-primary"/>
+				</form>
+				<a th:href="@{/items}" class="link-primary">ドリンク一覧</a>
+			</div>
+		</div>
+	</div>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
