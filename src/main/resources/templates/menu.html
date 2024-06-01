@@ -3,42 +3,54 @@
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>メニュー</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h2>メニュ－画面</h2>
-	<hr>
-	<div>
-		<a th:href="@{/orders}">
-			酒残へ
-		</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mt-5">メニュ－画面</h2>
+				<div>
+					<a th:href="@{/orders}" class="link-primary">
+						酒残へ
+					</a>
+				</div>
+				<div>
+					<a  th:href="@{/items}" class="link-primary">
+						ドリンク一覧へ
+					</a>
+				</div>
+				<div>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="link-primary">
+						従業員一覧へ
+					</a>
+				</div>
+				<br>
+				<div sec:authorize="hasAuthority('USER')">
+					【一般権限で表示される部分】
+				</div>
+				<div sec:authentication="name">
+					ログイン情報のname値に書き換わる
+				</div>
+				<div th:text="${#authentication.principal.displayname}">
+					新たに追加したdisplayname値に書き換わる
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					認証された場合のみ表示
+				</div>
+				<!-- ログアウト -->
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="ログアウト">
+				</form>
+			</div>
+		</div>
 	</div>
-	<div>
-		<a  th:href="@{/items}">
-			ドリンク一覧へ
-		</a>
-	</div>
-	<div>
-		<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}">
-			従業員一覧へ
-		</a>
-	</div>
-	<br>
-	<div sec:authorize="hasAuthority('USER')">
-		【一般権限で表示される部分】
-	</div>
-	<div sec:authentication="name">
-		ログイン情報のname値に書き換わる
-	</div>
-	<div th:text="${#authentication.principal.displayname}">
-		新たに追加したdisplayname値に書き換わる
-	</div>
-	<div sec:authorize="isAuthenticated()">
-		認証された場合のみ表示
-	</div>
-	<!-- ログアウト -->
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="ログアウト">
-	</form>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
