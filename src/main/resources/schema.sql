@@ -20,6 +20,8 @@ CREATE TABLE items (
     price INT NOT NULL,
     -- stock(ドリンクの在庫)
     stock NUMERIC(10,1) NOT NULL, 
+    -- order_quantity(ドリンクの発注数)
+    order_quantity INT NOT NULL,
     -- ideal_stock_weekday(平日の理想的な在庫数)
     ideal_stock_weekday INT NOT NULL,
     -- ideal_stock_weekend(週末の理想的な在庫数)

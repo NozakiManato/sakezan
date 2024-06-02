@@ -17,6 +17,7 @@ public class ItemHelper {
 		item.setSpecification(form.getSpecification());
 		item.setPrice(form.getPrice());
 		item.setStock(form.getStock());
+		item.setOrder_quantity(form.getOrder_quantity());
 		item.setIdeal_stock_weekday(form.getIdeal_stock_weekday());
 		item.setIdeal_stock_weekend(form.getIdeal_stock_weekend());
 		item.setDrink_category(form.getDrink_category());
@@ -33,6 +34,7 @@ public class ItemHelper {
 		form.setSpecification(item.getSpecification());
 		form.setPrice(item.getPrice());
 		form.setStock(item.getStock());
+		form.setOrder_quantity(item.getOrder_quantity());
 		form.setIdeal_stock_weekday(item.getIdeal_stock_weekday());
 		form.setIdeal_stock_weekend(item.getIdeal_stock_weekend());
 		form.setDrink_category(item.getDrink_category());

@@ -34,6 +34,8 @@ public class ItemForm {
 	/** ドリンクの在庫 */
 	@NotNull(message = "在庫は必須です")
 	private Double stock = 0.0;
+	@NotNull(message = "発注数は必須です")
+	private Integer order_quantity = 0;
 	/** 平日の理想的な在庫数 */
 	private Integer ideal_stock_weekday;
 	/** 週末の理想的な在庫数 */
