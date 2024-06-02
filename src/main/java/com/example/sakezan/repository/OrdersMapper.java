@@ -1,6 +1,5 @@
 package com.example.sakezan.repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -13,18 +12,16 @@ import com.example.sakezan.entity.Order;
 @Mapper
 public interface OrdersMapper {
 	/**
-	 * 酒残の情報すべて取得する
+	 * 酒残を取得する
 	 */
-	List<Order> selectAll();
-	
+	List<Order> selectAll(); 
 	/**
-	 * 特定の日付の酒残の情報を取得する
+	 * Item_codeから酒残を取得する
 	 */
-	List<Order> selectByDate(LocalDateTime orderDate);
-	
+	Order selectByItemCode(String item_code);
 	/**
-	 * 酒残の情報を登録する
+	 * 在庫の更新
 	 */
-	void insert(Order order);
+	void updateStock(Order order);
 	
 }

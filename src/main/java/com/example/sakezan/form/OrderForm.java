@@ -1,8 +1,9 @@
 package com.example.sakezan.form;
 
-import java.util.Map;
+import java.util.List;
 
-import jakarta.validation.constraints.NotNull;
+import com.example.sakezan.entity.Order;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderForm {
-	/** 商品コードごとの在庫数 */
-	@NotNull(message = "在庫数は必須です")
-	private Map<String, Integer> stock;
+	private List<Order> orders;
 }
