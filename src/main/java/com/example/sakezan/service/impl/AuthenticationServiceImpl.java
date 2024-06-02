@@ -2,6 +2,7 @@ package com.example.sakezan.service.impl;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.sakezan.entity.Authentication;
@@ -19,34 +20,36 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	 * DI
 	 */
 	private final AuthenticationsMapper authenticationsMapper;
+	private final PasswordEncoder passwordEncoder;
 	
 	@Override
 	public List<Authentication> findAllAuthentication() {
-		// TODO 自動生成されたメソッド・スタブ
 		return authenticationsMapper.selectAll();
 	}
 
 	@Override
 	public Authentication findByUsername(String username) {
-		// TODO 自動生成されたメソッド・スタブ
 		return authenticationsMapper.selectByUsername(username);
 	}
 
 	@Override
 	public void insertUser(Authentication authentication) {
-		// TODO 自動生成されたメソッド・スタブ
+		//パスワードのハッシュ化
+		String hashedPassword = passwordEncoder.encode(authentication.getPassword());
+		authentication.setPassword(hashedPassword);
 		authenticationsMapper.insert(authentication);
 	}
 
 	@Override
 	public void updateUser(Authentication authentication) {
-		// TODO 自動生成されたメソッド・スタブ
+		//パスワードのハッシュ化
+		String hashedPassword = passwordEncoder.encode(authentication.getPassword());
+		authentication.setPassword(hashedPassword);
 		authenticationsMapper.update(authentication);
 	}
 
 	@Override
 	public void deleteUser(String username) {
-		// TODO 自動生成されたメソッド・スタブ
 		authenticationsMapper.delete(username);
 	}
 

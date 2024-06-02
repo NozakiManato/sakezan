@@ -2,32 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>従業員の詳細</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h2>従業員</h2>
-	<table border="1">
-		<tr>
-			<th>名前</th>
-			<td th:text="${user.displayname}"></td>
-		</tr>
-		<tr>
-			<th>ユーザー名</th>
-			<td th:text="${user.username}"></td>
-		</tr>
-		<tr>
-			<th>パスワード</th>
-			<td>******</td>
-		</tr>
-		<tr>
-			<th>権限</th>
-			<td th:text="${user.authority}"></td>
-		</tr>
-	</table>
-	<a th:href="@{/users/edit/{username}(username=${user.username})}">編集</a>
-	<form th:action="@{/users/delete/{username}(username=${user.username})}" method="post">
-		<input type="submit" value="削除"/>
-	</form>
-	<a th:href="@{/users}">従業員一覧</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mt-5">従業員</h2>
+				<table class="table table-striped">
+					<tr>
+						<th>名前</th>
+						<td th:text="${user.displayname}"></td>
+					</tr>
+					<tr>
+						<th>ユーザー名</th>
+						<td th:text="${user.username}"></td>
+					</tr>
+					<tr>
+						<th>パスワード</th>
+						<td>******</td>
+					</tr>
+					<tr>
+						<th>権限</th>
+						<td th:text="${user.authority}"></td>
+					</tr>
+				</table>
+				<a th:href="@{/users/edit/{username}(username=${user.username})}" class="link-primary">編集</a>
+				<form th:action="@{/users/delete/{username}(username=${user.username})}" method="post">
+					<input type="submit" value="削除" class="btn btn-primary"/>
+				</form>
+				<a th:href="@{/users}" class="link-primary">従業員一覧</a>
+			</div>
+		</div>
+	</div>		
 </body>
 </html>

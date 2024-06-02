@@ -2,89 +2,102 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drinkフォーム</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<!-- タイトル：登録 or 編集 -->
-	<h2 th:if="${itemForm.isNew}">新規ドリンク登録</h2>
-	<h2 th:unless="${itemForm.isNew}">ドリンク編集</h2>
-	<!-- アクション：登録 or 編集 -->
-	<form th:action="${itemForm.isNew} ? @{/items/save} : @{/items/update}"
-		th:object="${itemForm}" method="post">
-		<table>
-			<tr>
-				<th>ドリンクコード</th>
-				<td><input type="text" th:field="*{item_code}"/>
-					<span th:if="${#fields.hasErrors('item_code')}"
-						th:errors="*{item_code}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>ドリンクの名前</th>
-				<td>
-					<input type="text" th:field="*{drink_name}" />
-					<span th:if="${#fields.hasErrors('drink_name')}"
-						th:errors="*{drink_name}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>ドリンクのサイズ</th>
-				<td>
-					<input type="text" th:field="*{specification}"/>
-					<span th:if="${#fields.hasErrors('specification')}"
-						th:errors="*{specification}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>お酒の値段</th>
-				<td>
-					<input type="text" th:field="*{price}" />
-					<span th:if="${#fields.hasErrors('price')}"
-						th:errors="*{price}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>お酒の在庫</th>
-				<td>
-					<input type="text" th:field="*{stock}" />
-					<span th:if="${#fields.hasErrors('stock')}"
-						th:errors="*{stock}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>平日理想在庫数</th>
-				<td>
-					<input type="text" th:field="*{ideal_stock_weekday}" />
-				</td>
-			</tr>
-			<tr>
-				<th>休日理想在庫数</th>
-				<td>
-					<input type="text" th:field="*{ideal_stock_weekend}" />
-				</td>
-			</tr>
-			<tr>
-				<th>商品カテゴリー</th>
-				<td>
-					<select id="drink_category" th:field="*{drink_category}">
-						<option th:value="ALCOHOL" th:text="#{ALCOHOL}"></option>
-						<option th:value="SOFT_DRINK" th:text="#{SOFT_DRINK}"></option>
-					</select>
-					<span th:if="${#fields.hasErrors('drink_category')}"
-						th:errors="*{drink_category}" style="color: red;">エラーがあれば表示
-					</span>
-				</td>
-			</tr>
-		</table>
-		<!-- ボタン：登録 or 編集 -->
-		<input th:if="${itemForm.isNew}" type="submit" value="登録" />
-		<input th:unless="${itemForm.isNew}" type="submit" value="更新" />
-	</form>
-	<a th:href="@{/items}">戻る</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- タイトル：登録 or 編集 -->
+				<h2 th:if="${itemForm.isNew}" class="mt-5">新規ドリンク登録</h2>
+				<h2 th:unless="${itemForm.isNew}" class="mt-5">ドリンク編集</h2>
+				<!-- アクション：登録 or 編集 -->
+				<form th:action="${itemForm.isNew} ? @{/items/save} : @{/items/update}"
+					th:object="${itemForm}" method="post">
+					<table class="table table-striped">
+						<tr>
+							<th>ドリンクコード</th>
+							<td><input type="text" th:field="*{item_code}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('item_code')}"
+									th:errors="*{item_code}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>ドリンクの名前</th>
+							<td>
+								<input type="text" th:field="*{drink_name}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('drink_name')}"
+									th:errors="*{drink_name}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>ドリンクのサイズ</th>
+							<td>
+								<input type="text" th:field="*{specification}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('specification')}"
+									th:errors="*{specification}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>お酒の値段</th>
+							<td>
+								<input type="text" th:field="*{price}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('price')}"
+									th:errors="*{price}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>お酒の在庫</th>
+							<td>
+								<input type="text" th:field="*{stock}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('stock')}"
+									th:errors="*{stock}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>平日理想在庫数</th>
+							<td>
+								<input type="text" th:field="*{ideal_stock_weekday}" class="form-control"/>
+							</td>
+						</tr>
+						<tr>
+							<th>休日理想在庫数</th>
+							<td>
+								<input type="text" th:field="*{ideal_stock_weekend}" class="form-control"/>
+							</td>
+						</tr>
+						<tr>
+							<th class="form-label">商品カテゴリー</th>
+							<td>
+								<select id="drink_category" th:field="*{drink_category}" class="form-select">
+									<option th:value="ALCOHOL" th:text="#{ALCOHOL}"></option>
+									<option th:value="SOFT_DRINK" th:text="#{SOFT_DRINK}"></option>
+								</select>
+								<span th:if="${#fields.hasErrors('drink_category')}"
+									th:errors="*{drink_category}" class="alert alert-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+					</table>
+					<!-- ボタン：登録 or 編集 -->
+					<input th:if="${itemForm.isNew}" type="submit" value="登録"  class="btn btn-primary"/>
+					<input th:unless="${itemForm.isNew}" type="submit" value="更新" class="btn btn-primary"/>
+				</form>
+				<a th:href="@{/items}" class="link-primary">戻る</a>
+			</div>
+		</div>
+	</div>
+	 <!-- Bootstrap JS, Popper.js, and jQuery -->
+	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
