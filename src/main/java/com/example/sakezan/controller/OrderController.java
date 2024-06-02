@@ -42,21 +42,36 @@ public class OrderController {
 		//=== バリデーションチェック ===
 		//入力チェックNG：入力画面に表示する
 		if (bindingResult.hasErrors()) {
-			return "order/list";
+			return "order/form";
 		}
 		orderService.placeOrder(form);
-		return "redirect;//orders";
+		return "order/confirmation";
 	}
 	
 	/**
 	 * 発注フォームを表示する
 	 */
 	@GetMapping
-	public String list(Model model) {
+	public String form(Model model) {
 		List<Item> items = itemService.findAllItem();
 		model.addAttribute("items", items);
-		model.addAttribute("orders", orderService.findAllOrder());
+		List<Order> orders = orderService.findAllOrder();
+		model.addAttribute("orders", orders);
 		return "order/form";
+	}
+	
+	/**
+	 * 確認画面を表示する
+	 */
+	@GetMapping("/confirmation")
+	public String confirmation(Model model) {
+		List<Item> items = itemService.findAllItem();
+		model.addAttribute("items", items);
+		List<Order> orders = orderService.findAllOrder();
+		model.addAttribute("orders", orders);
+		double totalAmount = orderService.calculateTotalAmount(orders);
+		model.addAttribute("totalAmount", totalAmount);
+		return "order/confirmation";
 	}
 	/**
 	 * 今日の発注を取得し表示する

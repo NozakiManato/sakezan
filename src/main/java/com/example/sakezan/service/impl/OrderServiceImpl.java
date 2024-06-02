@@ -16,6 +16,7 @@ import com.example.sakezan.repository.ItemsMapper;
 import com.example.sakezan.repository.OrdersMapper;
 import com.example.sakezan.service.OrderService;
 import com.example.sakezan.utility.HolidayUtil;
+import com.example.sakezan.utility.OrderCalculator;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,9 @@ public class OrderServiceImpl implements OrderService {
 	private final OrdersMapper ordersMapper;
 	private final ItemsMapper itemsMapper;
 	
+	/**
+	 * 発注処理
+	 */
 	@Override
 	public void placeOrder(OrderForm form) {
 		//発注日は前日なので明日の理想在庫数テーブルを参照するようにする
@@ -83,4 +87,12 @@ public class OrderServiceImpl implements OrderService {
 		return ordersMapper.selectByDate(date);
 	}
 
+	public double calculateTotalAmount(List<Order> orders) {
+		return orders.stream()
+				.mapToDouble(order -> {
+					Item item = itemsMapper.selectByItem_code(order.getItem_code());
+					return OrderCalculator.calculateAmount(item, order);
+				})
+				.sum();
+	}
 }

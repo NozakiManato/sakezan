@@ -26,4 +26,8 @@ public interface OrderService {
 	 */
 	List<Order> findOrderByDate(LocalDateTime date);
 	
+	/**
+	 * 税率計算をする
+	 */
+	double calculateTotalAmount(List<Order> orders);
 }
