@@ -53,6 +53,10 @@ public class OrderServiceImpl implements OrderService {
 					order.setStock((double)(currentStock + order_quantity));
 					ordersMapper.update(order);
 				}
+				order.setOrder_quantity(order_quantity);
+				//各注文の小計を計算
+				int amount = calculateAmount(order);
+				order.setAmount(amount);
 			}
 		}
 	}

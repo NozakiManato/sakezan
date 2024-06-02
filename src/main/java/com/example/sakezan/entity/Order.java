@@ -21,6 +21,8 @@ public class Order {
 	private Integer price;
 	/** ドリンクの在庫 */
 	private Double stock;
+	/** ドリンクの小計 */
+	private Integer amount;
 	/** ドリンクの発注数 */
 	private Integer order_quantity;
 	/** 平日の理想的な在庫数 */
