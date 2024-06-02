@@ -27,14 +27,20 @@
 							<td th:text="${order.drink_name}"></td>
 							<td th:text="${order.price}"></td>
 							<td th:text="${order.order_quantity}"></td>
-							<td th:text="${T(com.example.sakezan.util.OrderCalculator).calculateAmount(order)}"></td>
+							<td th:text="${T(com.example.sakezan.utility.OrderCalculator).calculateAmount(order)}"></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="text-right">
 					<strong>合計金額: </strong><span th:text="${totalAmount}"></span>円
 				</div>
-				<a href="/orders" class="btn btn-primary">戻る</a>
+				<div>
+					<a th:href="@{/orders}" class="btn btn-primary">酒残へ戻る</a>
+				</div>
+				<hr />
+				<div>
+					<a th:href="@{/}" class="btn btn-primary">メニューへ戻る</a>
+				</div>
 			</div>
 		</div>
 	</div>

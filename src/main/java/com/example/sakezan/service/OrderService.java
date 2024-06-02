@@ -21,14 +21,6 @@ public interface OrderService {
 	/**
 	 * 在庫数を更新する
 	 */
-<<<<<<< HEAD
-	List<Order> findOrderByDate(LocalDateTime date);
-	
-	/**
-	 * 税率計算をする
-	 */
-	double calculateTotalAmount(List<Order> orders);
-=======
 	void updateStock(List<Order> orders);
->>>>>>> 5273f408be4f90df45f685bfe60a9bfa27f9a3a5
+
 }

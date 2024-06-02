@@ -8,11 +8,6 @@ import com.example.sakezan.entity.Order;
 import com.example.sakezan.form.OrderForm;
 import com.example.sakezan.repository.OrdersMapper;
 import com.example.sakezan.service.OrderService;
-<<<<<<< HEAD
-import com.example.sakezan.utility.HolidayUtil;
-import com.example.sakezan.utility.OrderCalculator;
-=======
->>>>>>> 5273f408be4f90df45f685bfe60a9bfa27f9a3a5
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -50,15 +45,5 @@ public class OrderServiceImpl implements OrderService {
 			System.out.println("Updating stock for item: " + order.getItem_code() + "to " +order.getStock());
 			ordersMapper.updateStock(order);
 		}
-	}
-	
-
-	public double calculateTotalAmount(List<Order> orders) {
-		return orders.stream()
-				.mapToDouble(order -> {
-					Item item = itemsMapper.selectByItem_code(order.getItem_code());
-					return OrderCalculator.calculateAmount(item, order);
-				})
-				.sum();
 	}
 }
