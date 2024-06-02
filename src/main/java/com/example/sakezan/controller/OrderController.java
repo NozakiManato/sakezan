@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.sakezan.entity.Order;
 import com.example.sakezan.form.OrderForm;
 import com.example.sakezan.service.OrderService;
-import com.example.sakezan.utility.OrderCalculator;
 
 import lombok.RequiredArgsConstructor;
 
@@ -51,7 +50,6 @@ public class OrderController {
 		//PRGパターン
 		return "redirect:/orders/confirm";
 	}
-	
 	/**
 	 * 確認画面を表示する
 	 */
@@ -60,23 +58,15 @@ public class OrderController {
 		List<Order> orders = orderService.findOrder();
         OrderForm orderForm = new OrderForm();
         orderForm.setOrders(orders);
-        
+        //発注処理を実行
+        orderService.placeOrder(orders);
         //合計金額を計算
         int totalAmount = orders.stream()
-        						.mapToInt(order -> OrderCalculator.calculateAmount(order))
-        						.sum();
+                .mapToInt(orderService::calculateAmount)
+                .sum();
         
         model.addAttribute("orderForm", orderForm);
-        model.addAttribute("totalAmount", totalAmount);
+        model.addAttribute("totalAmout", totalAmount);
 		return "order/confirm";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

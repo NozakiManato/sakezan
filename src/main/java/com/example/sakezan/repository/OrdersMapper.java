@@ -23,5 +23,8 @@ public interface OrdersMapper {
 	 * 在庫の更新
 	 */
 	void updateStock(Order order);
-	
+	/**
+	 * 在庫と発注数の更新
+	 */
+	void update(Order order);
 }

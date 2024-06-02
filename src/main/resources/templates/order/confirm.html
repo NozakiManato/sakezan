@@ -18,7 +18,7 @@
 						<tr>
 							<th>商品名</th>
 							<th>単価</th>
-							<th>数量</th>
+							<th>発注数</th>
 							<th>小計</th>
 						</tr>
 					</thead>
@@ -27,7 +27,7 @@
 							<td th:text="${order.drink_name}"></td>
 							<td th:text="${order.price}"></td>
 							<td th:text="${order.order_quantity}"></td>
-							<td th:text="${T(com.example.sakezan.utility.OrderCalculator).calculateAmount(order)}"></td>
+							<td th:text="${order.amount}"></td>
 						</tr>
 					</tbody>
 				</table>

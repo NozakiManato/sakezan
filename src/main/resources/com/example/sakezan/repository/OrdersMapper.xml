@@ -12,10 +12,16 @@
 		FROM items
 		WHERE item_code = #{item_code}
 	</select>
-	<!--更新-->
+	<!--在庫更新-->
 	<update id="updateStock" parameterType="com.example.sakezan.entity.Order">
 		UPDATE items
 		SET stock = #{stock}
+		WHERE item_code = #{item_code}
+	</update>
+	<!--在庫と発注数更新-->
+	<update id="update" parameterType="com.example.sakezan.entity.Order">
+		UPDATE items
+		SET stock = #{stock}, order_quantity = #{order_quantity}
 		WHERE item_code = #{item_code}
 	</update>
 </mapper>

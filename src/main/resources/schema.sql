@@ -30,20 +30,6 @@ CREATE TABLE items (
     drink_category drink_category 
 );
 
--- お酒の発注データを格納するテーブル
-CREATE TABLE orders (
-    -- id(発注ID)
-    id SERIAL PRIMARY KEY,
-    -- item_code(ドリンクの商品コード)
-    item_code CHAR(6),
-    -- stock(お酒の在庫)
-    stock NUMERIC(10, 1) NOT NULL,
-    -- order_quantity(お酒の発注数)
-    order_quantity INT NOT NULL,
-    -- order_date(発注日)
-    order_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
 -- 権限用のENUM型
 CREATE TYPE role AS ENUM ('ADMIN', 'USER');
 
