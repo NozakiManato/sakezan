@@ -18,12 +18,12 @@
                     <div class="card-body">
                         <form th:action="@{/authentication}" method="post" th:object="${loginForm}">
 							<!-- エラー表示 -->
-							<div th:if="${param.error}">
-							<p style="color: red;">ユーザー名またはパスワードが違います</p>
+							<div th:if="${param.error}" class="alert alert-danger" role="alert">
+							<p>ユーザー名またはパスワードが違います</p>
 							</div>
 							<!-- ログアウト表示 -->
-							<div th:if="${param.logout}">
-							<p style="color: #007bff;">ログアウトしました</p>
+							<div th:if="${param.logout}" class="alert alert-primary" role="alert">
+							<p>ログアウトしました</p>
 							</div>
 							
 							<!-- ユーザー名 -->

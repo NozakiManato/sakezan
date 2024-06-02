@@ -2,38 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>従業員一覧</title>
+<!--Bootstrap CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h2>従業員一覧</h2>
-	<!--Flashメッセージ-->
-	<p th:if="${message}" th:text="${message}" style="color: blue;">
-		完了メッセージ
-	</p>
-	<p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;">
-		エラーメッセージ
-	</p>
-	<table border="1" width="300">
-		<thead>
-			<tr>
-				<th>名前</th>
-				<th>詳細</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="user : ${users}">
-				<td th:text="${user.displayname}"></td>
-				<td>
-					<a th:href="@{/users/{username}(username=${user.username})}">
-						詳細
-					</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a th:href="@{/users/form}">新規登録</a>
-	<br />
-	<!--メニュー画面へ-->
-	<a th:href="@{/}">メニュー画面へ</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="mt-5">従業員一覧</h2>
+				<!--Flashメッセージ-->
+				<p th:if="${message}" th:text="${message}" class="alert alert-primary" role="alert">
+					完了メッセージ
+				</p>
+				<p th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger" role="alert">
+					エラーメッセージ
+				</p>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>名前</th>
+							<th>詳細</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${users}">
+							<td th:text="${user.displayname}"></td>
+							<td>
+								<a th:href="@{/users/{username}(username=${user.username})}" class="link-primary">
+									詳細
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a th:href="@{/users/form}" class="link-primary">新規登録</a>
+				<br />
+				<!--メニュー画面へ-->
+				<a th:href="@{/}" class="link-primary">メニュー画面へ</a>
+			</div>
+		</div>
+	</div>
+	 <!-- Bootstrap JS, Popper.js, and jQuery -->
+	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
