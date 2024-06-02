@@ -5,85 +5,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>メニュー</title>
-<<<<<<< HEAD
-<!-- BootstrapのCSSを読み込む -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" th:href="@{css/style.css}"/>
-<style>
-    .square-button {
-        display: inline-block;
-        width: 100px;
-        height: 100px;
-        margin: 10px;
-        background-color: #007bff;
-        color: white;
-        text-align: center;
-        line-height: 100px; /* 縦中央揃え */
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    .square-button:hover {
-        background-color: #0056b3;
-    }
-</style>
-</head>
-<body>
-    <div class="container">
-        <h2>メニュ－画面</h2>
-        <hr>
-        <a class="square-button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/items}">
-            酒残
-        </a>
-        <a class="square-button" sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}">
-            従業員
-        </a>
-        <br>
-        <div sec:authorize="hasAuthority('USER')">
-            【一般権限で表示される部分】
-        </div>
-        <div sec:authentication="name">
-            ログイン情報のname値に書き換わる
-        </div>
-        <div th:text="${#authentication.principal.displayname}">
-            新たに追加したdisplayname値に書き換わる
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            認証された場合のみ表示
-        </div>
-        <!-- ログアウト -->
-        <form th:action="@{/logout}" method="post">
-            <input class="btn btn-danger" type="submit" value="ログアウト" >
-        </form>
-    </div>
-    <!-- BootstrapのJSと依存するポッパーとjQueryを読み込む -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-=======
 <!--Bootstrap CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="mt-5">メニュ－画面</h2>
-				<div>
-					<a th:href="@{/orders}" class="link-primary">
-						酒残へ
-					</a>
-				</div>
-				<div>
-					<a  th:href="@{/items}" class="link-primary">
-						ドリンク一覧へ
-					</a>
-				</div>
-				<div>
-					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="link-primary">
-						従業員一覧へ
-					</a>
-				</div>
+				<div class="button-container">
+                    <div class="button-item">
+                        <a th:href="@{/orders}" class="square-button">
+                            酒残へ
+                        </a>
+                    </div>
+                    <div class="button-item">
+                        <a th:href="@{/items}" class="square-button">
+                            ドリンク一覧へ
+                        </a>
+                    </div>
+                    <div class="button-item">
+                        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="square-button">
+                            従業員一覧へ
+                        </a>
+                    </div>
+                </div>
 				<br>
 				<div sec:authorize="hasAuthority('USER')">
 					【一般権限で表示される部分】
@@ -99,7 +46,7 @@
 				</div>
 				<!-- ログアウト -->
 				<form th:action="@{/logout}" method="post">
-					<input type="submit" value="ログアウト">
+					<input type="submit" value="ログアウト" class="btn btn-danger">
 				</form>
 			</div>
 		</div>
@@ -108,6 +55,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
->>>>>>> b25272deff626bd60ab22491e09ea1cf5230e3bb
 </body>
 </html>
