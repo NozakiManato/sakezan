@@ -1,6 +1,6 @@
 --1件目
-INSERT INTO Items (item_code, drink_name, specification, price, stock, ideal_stock_weekday, ideal_stock_weekend, drink_category)
-VALUES ('000001', '商品A', '500ml', 500, 10, 15, 20, 'ALCOHOL');
+INSERT INTO Items (item_code, drink_name, specification, price, stock,order_quantity, ideal_stock_weekday, ideal_stock_weekend, drink_category)
+VALUES ('000001', '商品A', '500ml', 500, 10, 0, 15, 20, 'ALCOHOL');
 
 --認証テーブルへのダミーデータの追加
 INSERT INTO authentications (username, password, authority,displayname) VALUES 

@@ -12,20 +12,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
-	/** お酒の商品コード */
+	/** ドリンクの商品コード */
 	private String item_code;
-	/** お酒の名前 */
+	/** ドリンクの名前 */
 	private String drink_name;
-	/**  お酒のサイズ */
+	/**  ドリンクのサイズ */
 	private String specification;
-	/** お酒の値段 */
+	/** ドリンクの値段 */
 	private Integer price;
-	/** お酒の在庫 */
+	/** ドリンクの在庫 */
 	private Double stock;
+	/** ドリンクの発注数 */
+	private Integer order_quantity;
 	/** 平日の理想的な在庫数 */
 	private Integer ideal_stock_weekday;
 	/** 週末の理想的な在庫数 */
 	private Integer ideal_stock_weekend;
-	/** 商品のカテゴリー */
+	/** ドリンクのカテゴリー */
 	private DrinkCategory drink_category;
 }

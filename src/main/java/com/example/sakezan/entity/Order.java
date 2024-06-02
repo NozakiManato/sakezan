@@ -1,7 +1,5 @@
 package com.example.sakezan.entity;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +11,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-	/** ID */
-	private Long id;
-	/** 商品コード */
+	/** ドリンクの商品コード */
 	private String item_code;
-	/** 在庫数 */
-	private double stock = 0.0;
-	/** 発注数量 */
-	int order_quantity;
-	/** 発注日 */
-	private LocalDateTime orderDate;
+	/** ドリンクの名前 */
+	private String drink_name;
+	/**  ドリンクのサイズ */
+	private String specification;
+	/** ドリンクの値段 */
+	private Integer price;
+	/** ドリンクの在庫 */
+	private Double stock;
+	/** ドリンクの発注数 */
+	private Integer order_quantity;
+	/** 平日の理想的な在庫数 */
+	private Integer ideal_stock_weekday;
+	/** 週末の理想的な在庫数 */
+	private Integer ideal_stock_weekend;
+	/** ドリンクのカテゴリー */
+	private DrinkCategory drink_category;
 }

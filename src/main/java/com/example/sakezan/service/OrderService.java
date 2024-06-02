@@ -1,6 +1,5 @@
 package com.example.sakezan.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.example.sakezan.entity.Order;
@@ -15,19 +14,21 @@ public interface OrderService {
 	 * 発注を行う
 	 */
 	void placeOrder(OrderForm form);
-	
 	/**
-	 * 全「発注」を検索する
+	 * 酒残を検索する
 	 */
-	List<Order> findAllOrder();
-	
+	List<Order> findOrder();
 	/**
-	 * 特定の日付の発注を取得する
+	 * 在庫数を更新する
 	 */
+<<<<<<< HEAD
 	List<Order> findOrderByDate(LocalDateTime date);
 	
 	/**
 	 * 税率計算をする
 	 */
 	double calculateTotalAmount(List<Order> orders);
+=======
+	void updateStock(List<Order> orders);
+>>>>>>> 5273f408be4f90df45f685bfe60a9bfa27f9a3a5
 }

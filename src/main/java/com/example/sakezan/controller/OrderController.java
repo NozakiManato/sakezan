@@ -1,21 +1,13 @@
 package com.example.sakezan.controller;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.sakezan.entity.Item;
-import com.example.sakezan.entity.Order;
 import com.example.sakezan.form.OrderForm;
-import com.example.sakezan.service.ItemService;
 import com.example.sakezan.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,9 +22,9 @@ import lombok.RequiredArgsConstructor;
 public class OrderController {
 	/** DI */
 	private final OrderService orderService;
-	private final ItemService itemService;
 	
 	/**
+<<<<<<< HEAD
 	 *発注を行う 
 	 */
 	@PostMapping("/placeOrder")
@@ -73,15 +65,49 @@ public class OrderController {
 		model.addAttribute("totalAmount", totalAmount);
 		return "order/confirmation";
 	}
-	/**
-	 * 今日の発注を取得し表示する
+=======
+	 * 酒残フォームを表示する
 	 */
-	@GetMapping("/today")
-	public String TodayOrders(Model model) {
-		LocalDateTime today = LocalDateTime.now().toLocalDate().atStartOfDay();
-		List<Order> orders = orderService.findOrderByDate(today);
-		model.addAttribute("orders", orders);
-		return "order/list";
+	@GetMapping
+	public String form(Model model) {
+		OrderForm orderForm = new OrderForm();
+        orderForm.setOrders(orderService.findOrder());
+        model.addAttribute("orderForm", orderForm);
+		return "order/form";
 	}
+	
+>>>>>>> 5273f408be4f90df45f685bfe60a9bfa27f9a3a5
+	/**
+	 * 在庫の更新処理
+	 */
+	@PostMapping("/update")
+	public String update(OrderForm form,
+			RedirectAttributes attributes) {
+		System.out.println("FROM data: " + form.getOrders());
+		orderService.updateStock(form.getOrders());
+		//フラッシュメッセージ
+		attributes.addFlashAttribute("message", "在庫が更新されました");
+		//PRGパターン
+		return "redirect:/orders/confirm";
+	}
+	
+	/**
+	 * 確認画面を表示する
+	 */
+	@GetMapping("/confirm")
+	public String confirm(Model model) {
+        OrderForm orderForm = new OrderForm();
+        orderForm.setOrders(orderService.findOrder());
+        model.addAttribute("orderForm", orderForm);
+		return "order/confirm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

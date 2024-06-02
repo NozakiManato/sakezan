@@ -12,7 +12,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="mt-5">発注フォーム</h2>
-				<form th:action="@{/orders/placeOrder}" method="post">
+				<form th:action="@{/orders/update}" th:object="${orderForm}" method="post">
+					
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -22,11 +23,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="item :${items}">
-								<td th:text="${item.drink_name}"></td>
-								<td th:text="${item.specification}"></td>
+							<tr th:each="order, iterStat : ${orderForm.orders}">
+								<input type="hidden" th:field="*{orders[__${iterStat.index}__].item_code}" />
+								<td th:text="${order.drink_name}"></td>
+								<td th:text="${order.specification}"></td>
 								<td>
-									<input type="number" name="Stocks[__${item.item_code}__]" class="form-control" />
+									<input type="number" th:field="*{orders[__${iterStat.index}__].stock}" class="form-control" />
 								</td>
 							</tr>
 						</tbody>
@@ -36,9 +38,9 @@
 			</div>
 		</div>
 	</div>
-	 <!-- Bootstrap JS, Popper.js, and jQuery -->
-	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Bootstrap JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>メニュー</title>
 <!--Bootstrap CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="mt-5">メニュ－画面</h2>
-				<div>
-					<a th:href="@{/orders}" class="link-primary">
-						酒残へ
-					</a>
-				</div>
-				<div>
-					<a  th:href="@{/items}" class="link-primary">
-						ドリンク一覧へ
-					</a>
-				</div>
-				<div>
-					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="link-primary">
-						従業員一覧へ
-					</a>
-				</div>
+				<div class="button-container">
+                    <div class="button-item">
+                        <a th:href="@{/orders}" class="square-button">
+                            酒残へ
+                        </a>
+                    </div>
+                    <div class="button-item">
+                        <a th:href="@{/items}" class="square-button">
+                            ドリンク一覧へ
+                        </a>
+                    </div>
+                    <div class="button-item">
+                        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="square-button">
+                            従業員一覧へ
+                        </a>
+                    </div>
+                </div>
 				<br>
 				<div sec:authorize="hasAuthority('USER')">
 					【一般権限で表示される部分】
@@ -43,7 +46,7 @@
 				</div>
 				<!-- ログアウト -->
 				<form th:action="@{/logout}" method="post">
-					<input type="submit" value="ログアウト">
+					<input type="submit" value="ログアウト" class="btn btn-danger">
 				</form>
 			</div>
 		</div>
