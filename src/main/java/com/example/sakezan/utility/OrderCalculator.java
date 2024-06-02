@@ -1,13 +1,12 @@
 package com.example.sakezan.utility;
 
-import com.example.sakezan.entity.Item;
 import com.example.sakezan.entity.Order;
 
 public class OrderCalculator {
 	
-	public static double calculateTax(Item item) {
+	public static double calculateTax(Order order) {
 		//お酒は税率10%、ソフトドリンクは税率8%
-		switch (item.getDrink_category()) {
+		switch (order.getDrink_category()) {
 		case ALCOHOL: 
 			return 0.10;
 		case SOFT_DRINK:
@@ -18,8 +17,8 @@ public class OrderCalculator {
 		}
 	}
 	
-	public static double calculateAmount(Item item, Order order) {
-		double taxRate = calculateTax(item);
-		return order.getOrder_quantity() * item.getPrice() * (1 + taxRate);
+	public static int calculateAmount(Order order) {
+		double taxRate = calculateTax(order);
+		return (int) (order.getOrder_quantity() * order.getPrice() * (1 + taxRate));
 	}
 }
