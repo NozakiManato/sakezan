@@ -3,7 +3,6 @@ package com.example.sakezan.service;
 import java.util.List;
 
 import com.example.sakezan.entity.Order;
-import com.example.sakezan.form.OrderForm;
 
 /**
  * Order:サービス
@@ -13,7 +12,11 @@ public interface OrderService {
 	/**
 	 * 発注を行う
 	 */
-	void placeOrder(OrderForm form);
+	void placeOrder(List<Order> orders);
+	/**
+	 * 税率計算する
+	 */
+	int calculateAmount(Order order);
 	/**
 	 * 酒残を検索する
 	 */
