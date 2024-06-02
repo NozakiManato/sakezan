@@ -62,11 +62,11 @@ public class OrderController {
         orderService.placeOrder(orders);
         //合計金額を計算
         int totalAmount = orders.stream()
-                .mapToInt(orderService::calculateAmount)
+                .mapToInt(Order::getAmount)
                 .sum();
-        
+        System.out.println("合計金額" + totalAmount);
         model.addAttribute("orderForm", orderForm);
-        model.addAttribute("totalAmout", totalAmount);
+        model.addAttribute("totalAmount", totalAmount);
 		return "order/confirm";
 	}
 }
