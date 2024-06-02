@@ -3,18 +3,19 @@
 <mapper namespace="com.example.sakezan.repository.OrdersMapper">
 	<!--全件検索-->
 	<select id="selectAll" resultType="com.example.sakezan.entity.Order">
-		SELECT * 
-		FROM orders
-	</select>
-	<!--特定の日付のorderを取得する-->
-	<select id="selectByDate" resultType="com.example.sakezan.entity.Order">
 		SELECT *
-		FROM orders
-		WHERE DATE(order_date) = DATE(#{orderDate})
+		FROM items
 	</select>
-	<!--登録-->
-	<insert id="insert" parameterType="com.example.sakezan.entity.Order">
-		INSERT INTO orders (item_code, stock, order_quantity, order_date)
-		VALUES (#{item_code}, #{stock}, #{order_quantity}, #{order_date})		
-	</insert>
+	<!--Item_code検索-->
+	<select id="selectByItemCode" resultType="com.example.sakezan.entity.Order">
+		SELECT *
+		FROM items
+		WHERE item_code = #{item_code}
+	</select>
+	<!--更新-->
+	<update id="updateStock" parameterType="com.example.sakezan.entity.Order">
+		UPDATE items
+		SET stock = #{stock}
+		WHERE item_code = #{item_code}
+	</update>
 </mapper>
