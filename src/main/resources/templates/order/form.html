@@ -28,7 +28,7 @@
 								<td th:text="${order.drink_name}"></td>
 								<td th:text="${order.specification}"></td>
 								<td>
-									<input type="number" th:field="*{orders[__${iterStat.index}__].stock}" class="form-control" />
+									<input type="number" step="0.1" th:field="*{orders[__${iterStat.index}__].stock}" class="form-control" />
 								</td>
 							</tr>
 						</tbody>
