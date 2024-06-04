@@ -30,11 +30,14 @@
 						<td th:text="${user.authority}"></td>
 					</tr>
 				</table>
-				<a th:href="@{/users/edit/{username}(username=${user.username})}" class="link-primary">編集</a>
-				<form th:action="@{/users/delete/{username}(username=${user.username})}" method="post">
-					<input type="submit" value="削除" class="btn btn-primary"/>
-				</form>
-				<a th:href="@{/users}" class="link-primary">従業員一覧</a>
+				<div class="d-flex ustify-content-between align-items-center mt-3">
+				    <a th:href="@{/users/edit/{username}(username=${user.username})}" class="btn btn-primary mr-2">編集</a>
+				    <a th:href="@{/users}" class="btn btn-primary mr-2" >従業員一覧</a>
+					<a th:href="@{/}" class="btn btn-primary mr-2">メニューへ戻る</a>
+					<form th:action="@{/users/delete/{username}(username=${user.username})}" method="post" class="ml-auto">
+					    <input type="submit" value="削除" class="btn btn-danger"/>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>		

@@ -44,16 +44,17 @@ public class OrderServiceImpl implements OrderService {
 			if (order != null) {
 				int ideal_stock = (isWeekend || isHoliday) ? order.getIdeal_stock_weekend() : order.getIdeal_stock_weekday();
 				double currentStock = order.getStock();
-				System.out.println("現在の在庫数" + currentStock);
-				int order_quantity = (int) (ideal_stock- currentStock);
-				System.out.println("発注数" + order_quantity);
-				//計算したドリンクと発注日、在庫数をorderクラスに格納し、登録する
+				int order_quantity = (int)(ideal_stock - currentStock + 0.5);
+				//計算したドリンクと在庫数をorderクラスに格納し、登録する
 				if (order_quantity > 0) {
 					order.setOrder_quantity(order_quantity);
 					order.setStock((double)(currentStock + order_quantity));
 					ordersMapper.update(order);
+				} else {
+					order.setOrder_quantity(order_quantity);
+					order.setStock(currentStock);
+					ordersMapper.update(order);
 				}
-				order.setOrder_quantity(order_quantity);
 				//各注文の小計を計算
 				int amount = calculateAmount(order);
 				order.setAmount(amount);
@@ -69,7 +70,6 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void updateStock(List<Order> orders) {
 		for (Order order : orders) {
-			System.out.println("Updating stock for item: " + order.getItem_code() + "to " +order.getStock());
 			ordersMapper.updateStock(order);
 		}
 	}

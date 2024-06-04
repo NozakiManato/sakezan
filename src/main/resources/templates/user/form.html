@@ -17,7 +17,6 @@
 				<form th:action="${authenticationForm.isNew} ? @{/users/save} : @{/users/update}"
 					th:object="${authenticationForm}" method="post">
 					<table class="table table-striped">
-						<tr>
 							<th>名前</th>
 							<td><input type="text" th:field="*{displayname}" class="form-control">
 								<span th:if="${#fields.hasErrors('displayname')}"

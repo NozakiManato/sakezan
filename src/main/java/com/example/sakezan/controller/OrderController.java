@@ -43,7 +43,6 @@ public class OrderController {
 	@PostMapping("/update")
 	public String update(OrderForm form,
 			RedirectAttributes attributes) {
-		System.out.println("FROM data: " + form.getOrders());
 		orderService.updateStock(form.getOrders());
 		//フラッシュメッセージ
 		attributes.addFlashAttribute("message", "在庫が更新されました");
@@ -64,7 +63,6 @@ public class OrderController {
         int totalAmount = orders.stream()
                 .mapToInt(Order::getAmount)
                 .sum();
-        System.out.println("合計金額" + totalAmount);
         model.addAttribute("orderForm", orderForm);
         model.addAttribute("totalAmount", totalAmount);
 		return "order/confirm";
