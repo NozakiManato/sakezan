@@ -57,11 +57,13 @@
 							</td>
 						</tr>
 					</table>
+				<div class="d-flex justify-content-between align-items-center mt-3">
 				<!--ボタン：登録 or 編集-->
 				<input th:if="${authenticationForm.isNew}" type="submit" value="登録" class="btn btn-primary"/>
 				<input th:unless="${authenticationForm.isNew}" type="submit" value="更新" class="btn btn-primary"/>
 				</form>
-				<a th:href="@{/users}" class="link-primary">戻る</a>
+				<a th:href="@{/users}" class="btn btn-primary ml-3">戻る</a>
+				</div>
 			</div>
 		</div>
 	</div>

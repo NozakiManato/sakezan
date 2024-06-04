@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>確認画面</title>
 <!--Bootstrap CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -34,12 +35,9 @@
 				<div class="text-right">
 					<strong>合計金額: </strong><span th:text="${totalAmount}"></span>円
 				</div>
-				<div>
-					<a th:href="@{/orders}" class="btn btn-primary">酒残へ戻る</a>
-				</div>
-				<hr />
-				<div>
-					<a th:href="@{/}" class="btn btn-primary">メニューへ戻る</a>
+				<div  class="d-flex justify-content-between align-items-center mt-3">
+					<a th:href="@{/orders}" class="btn btn-primary">酒残へ</a>
+					<a th:href="@{/}" class="btn btn-primary">メニューへ</a>
 				</div>
 			</div>
 		</div>
