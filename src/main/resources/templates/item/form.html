@@ -97,12 +97,12 @@
 						</tr>
 					</table>
 					<div class="d-flex justify-content-between align-items-center mt-3">
+					<a th:href="@{/items}" class="btn btn-primary">ドリンク一覧へ</a>
 					<!-- ボタン：登録 or 編集 -->
 					<input th:if="${itemForm.isNew}" type="submit" value="登録"  class="btn btn-primary"/>
 					<input th:unless="${itemForm.isNew}" type="submit" value="更新" class="btn btn-primary"/>
+					</div>
 				</form>
-				<a th:href="@{/items}" class="btn btn-primary">ドリンク一覧へ</a>
-			</div>
 			</div>
 		</div>
 	</div>
