@@ -1,1 +1,28 @@
 @charset "UTF-8";
+.button-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 600px;
+}
+
+.button-item {
+    position: relative;
+	width: 44%;
+	margin: 3%;
+	background: #007bff;
+	border-radius: 30px;
+}
+
+.button-item::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.button-item div {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

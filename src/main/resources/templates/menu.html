@@ -14,27 +14,20 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="mt-5">メニュ－画面</h2>
+				<div th:text="${#authentication.principal.displayname}">
+					新たに追加したdisplayname値に書き換わる
+				</div>
 				<div class="button-container">
-					<div th:text="${#authentication.principal.displayname}">
-						新たに追加したdisplayname値に書き換わる
-					</div>
-                    <div class="button-item">
-                        <a th:href="@{/orders}" class="square-button">
-                            酒残へ
-                        </a>
-                    </div>
-                    <div class="button-item">
-                        <a th:href="@{/items}" class="square-button">
-                            ドリンク一覧へ
-                        </a>
-                    </div>
-                    <div class="button-item">
-                        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="square-button">
-                            従業員一覧へ
-                        </a>
-                    </div>
-                </div>
-
+					<a th:href="@{/orders}" class="button-item">
+                       <div>酒残へ</div>
+                    </a>
+                    <a th:href="@{/items}" class="button-item">
+                        <div>ドリンク一覧へ</div>
+                    </a>
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="button-item">
+                        <div>従業員一覧へ</div>
+                    </a>
+                 </div>
 				<!-- ログアウト -->
 				<form th:action="@{/logout}" method="post">
 					<input type="submit" value="ログアウト" class="btn btn-danger">
