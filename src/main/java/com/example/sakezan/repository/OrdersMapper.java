@@ -3,6 +3,7 @@ package com.example.sakezan.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 
 import com.example.sakezan.entity.Order;
 
@@ -18,7 +19,7 @@ public interface OrdersMapper {
 	/**
 	 * Item_codeから酒残を取得する
 	 */
-	Order selectByItemCode(String item_code);
+	Order selectById(@Param("id") Integer id);
 	/**
 	 * 在庫の更新
 	 */

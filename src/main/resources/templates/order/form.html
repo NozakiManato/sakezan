@@ -24,7 +24,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="order, iterStat : ${orderForm.orders}">
-								<input type="hidden" th:field="*{orders[__${iterStat.index}__].item_code}" />
+								<input type="hidden" th:field="*{orders[__${iterStat.index}__].id}" />
 								<td th:text="${order.drink_name}"></td>
 								<td th:text="${order.specification}"></td>
 								<td>

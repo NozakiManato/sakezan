@@ -27,9 +27,9 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item findByIdItem(String item_code) {
+	public Item findById(Integer id) {
 		// TODO 自動生成されたメソッド・スタブ
-		return itemsMapper.selectByItem_code(item_code);
+		return itemsMapper.selectById(id);
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void deleteItem(String item_code) {
+	public void deleteItem(Integer id) {
 		// TODO 自動生成されたメソッド・スタブ
-		itemsMapper.delete(item_code);
+		itemsMapper.delete(id);
 	}
 	
 	

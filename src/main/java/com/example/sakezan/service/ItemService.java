@@ -14,9 +14,9 @@ public interface ItemService {
 	List<Item> findAllItem();
 	
 	/**
-	 * 指定されたItem_codeの「ドリンク」を検索する
+	 * 指定されたIdの「ドリンク」を検索する
 	 */
-	Item findByIdItem(String item_code);
+	Item findById(Integer id);
 	
 	/**
 	 * 「ドリンク」を新規登録する
@@ -29,7 +29,7 @@ public interface ItemService {
 	void updateItem(Item item);
 	
 	/**
-	 * 指定されたItem_codeの「ドリンク」を削除する
+	 * 指定されたIdの「ドリンク」を削除する
 	 */
-	void deleteItem(String item_code);
+	void deleteItem(Integer id);
 }

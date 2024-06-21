@@ -17,6 +17,8 @@
 				<!-- アクション：登録 or 編集 -->
 				<form th:action="${itemForm.isNew} ? @{/items/save} : @{/items/update}"
 					th:object="${itemForm}" method="post">
+					<!--IDを隠しフィールドとして保持-->
+					<input type="hidden" th:field="*{id}">
 					<table class="table table-striped">
 						<tr>
 							<th>ドリンクコード</th>

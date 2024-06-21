@@ -36,7 +36,7 @@
 						</tr>
 						<tr>
 							<th>パスワード</th>
-							<td><input type="password" th:field="*{passwordInput}" class="form-control">
+							<td><input type="text" th:field="*{passwordInput}" class="form-control">
 								<span th:if="${#fields.hasErrors('passwordInput')}"
 								th:errors="*{passwordInput}" class="alert alert-danger" role="alert">
 									エラーがあれば表示
