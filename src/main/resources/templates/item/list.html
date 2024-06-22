@@ -25,17 +25,17 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>商品コード</th>
+							<th>ID</th>
 							<th>名前</th>
 							<th>詳細</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="item :${items}">
-							<td th:text="${item.item_code}"></td>
+							<td th:text="${item.id}"></td>
 							<td	th:text="${item.drink_name}"></td>
 							<td>
-								<a th:href="@{/items/{item_code}(item_code=${item.item_code})}" class="link-primary">
+								<a th:href="@{/items/{id}(id=${item.id})}" class="link-primary">
 									詳細
 								</a>
 							</td>

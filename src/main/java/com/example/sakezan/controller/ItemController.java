@@ -41,13 +41,13 @@ public class ItemController {
 	/**
 	 * 指定されたItem_codeの「ドリンク」の詳細を表示する
 	 */
-	@GetMapping("/{item_code}")
-	public String detail(@PathVariable String item_code, Model model,
+	@GetMapping("/{id}")
+	public String detail(@PathVariable Integer id, Model model,
 			RedirectAttributes attributes) {
 		//Item_codeに対応する「ドリンク」情報を取得
-		Item item = itemService.findByIdItem(item_code);
+		Item item = itemService.findById(id);
 		if (item != null) {
-			model.addAttribute("item", itemService.findByIdItem(item_code));
+			model.addAttribute("item", itemService.findById(id));
 			return "item/detail";
 		} else {
 			attributes.addFlashAttribute("errorMessage", "対象データがありません");
@@ -90,11 +90,11 @@ public class ItemController {
 	/**
 	 * 指定されたIDの修正画面を表示する
 	 */
-	@GetMapping("/edit/{item_code}")
-	public String edit(@PathVariable String item_code, Model model,
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable Integer id, Model model,
 			RedirectAttributes attributes) {
 		//item_codeに対応する「ドリンク」を取得
-		Item target = itemService.findByIdItem(item_code);
+		Item target = itemService.findById(id);
 		if (target != null) {
 			//対象データがある場合はFormへの変換
 			ItemForm form = ItemHelper.convertItemForm(target);
@@ -136,11 +136,11 @@ public class ItemController {
 	/**
 	 * 指定されたItem_codeの「ドリンク」を削除する
 	 */
-	@PostMapping("/delete/{item_code}")
-	public String delete(@PathVariable String item_code, RedirectAttributes attributes) {
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, RedirectAttributes attributes) {
 		//TODO: process POST request
 		//削除処理
-		itemService.deleteItem(item_code);
+		itemService.deleteItem(id);
 		//フラッシュメッセージ
 		attributes.addFlashAttribute("message", "ドリンクが削除されました");
 		//PRGパターン

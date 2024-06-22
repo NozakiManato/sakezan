@@ -18,7 +18,7 @@
 		VALUES (#{username}, #{password}, #{authority, typeHandler=com.example.sakezan.typehandler.RoleTypeHandler}, #{displayname})
 	</insert>
 	
-	<update id="update">
+	<update id="update" parameterType="com.example.sakezan.entity.Authentication">
 		UPDATE authentications
         SET username = #{username}, password = #{password}, displayname = #{displayname},
         authority= #{authority, typeHandler=com.example.sakezan.typehandler.RoleTypeHandler}

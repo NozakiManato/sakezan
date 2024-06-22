@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemForm {
+	/** id */
+	private Integer id;
 	/** ドリンクの商品コード */
 	//item_codeではなく、drink_codeに変える
 	@Pattern(regexp = "\\d{6}", message = "商品コードは６文字の数字でなければなりません")

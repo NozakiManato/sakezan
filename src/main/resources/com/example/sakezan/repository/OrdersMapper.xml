@@ -4,24 +4,23 @@
 	<!--全件検索-->
 	<select id="selectAll" resultType="com.example.sakezan.entity.Order">
 		SELECT *
-		FROM items
+		FROM items ORDER BY id ASC
 	</select>
 	<!--Item_code検索-->
-	<select id="selectByItemCode" resultType="com.example.sakezan.entity.Order">
+	<select id="selectById" resultType="com.example.sakezan.entity.Order">
 		SELECT *
 		FROM items
-		WHERE item_code = #{item_code}
+		WHERE id = #{id}
 	</select>
 	<!--在庫更新-->
 	<update id="updateStock" parameterType="com.example.sakezan.entity.Order">
 		UPDATE items
 		SET stock = #{stock}
-		WHERE item_code = #{item_code}
+		WHERE id = #{id}
 	</update>
-	<!--在庫と発注数更新-->
 	<update id="update" parameterType="com.example.sakezan.entity.Order">
 		UPDATE items
 		SET stock = #{stock}, order_quantity = #{order_quantity}
-		WHERE item_code = #{item_code}
+		WHERE id = #{id}
 	</update>
 </mapper>

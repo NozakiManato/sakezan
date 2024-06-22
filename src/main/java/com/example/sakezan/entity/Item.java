@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
+	/** ID */
+	private Integer id;
 	/** ドリンクの商品コード */
 	private String item_code;
 	/** ドリンクの名前 */

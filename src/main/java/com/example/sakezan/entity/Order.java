@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
+	/** ID */
+	private Integer id;
 	/** ドリンクの商品コード */
 	private String item_code;
 	/** ドリンクの名前 */

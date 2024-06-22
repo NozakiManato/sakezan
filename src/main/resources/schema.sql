@@ -10,8 +10,10 @@ CREATE TYPE drink_category AS ENUM ('ALCOHOL', 'SOFT_DRINK');
 
 -- ドリンクの商品を格納するテーブル
 CREATE TABLE items (
+	--id(することID):主キー
+	id serial PRIMARY KEY,
     -- item_code(ドリンクの商品コード)
-    item_code CHAR(6) PRIMARY KEY NOT NULL,
+    item_code CHAR(6) NOT NULL,
     -- drink_name(ドリンクの名前):NULL不許可
     drink_name VARCHAR(100) NOT NULL,
     -- specification(ドリンクのサイズ)
@@ -35,8 +37,8 @@ CREATE TYPE role AS ENUM ('ADMIN', 'USER');
 
 -- 認証情報を格納するテーブル
 CREATE TABLE authentications (
-    -- ユーザー名: 主キー
-    username VARCHAR(50) PRIMARY KEY,
+    -- ユーザー名
+    username VARCHAR(50) NOT NULL,
     -- パスワード
     password VARCHAR(255) NOT NULL,
     -- 権限

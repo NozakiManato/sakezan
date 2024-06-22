@@ -130,7 +130,7 @@ public class AuthenticationController {
 		Authentication authentication = AuthenticationHelper.convertAuthentication(form);
 		//更新処理
 		authenticationService.updateUser(authentication);
-		attributes.addFlashAttribute("message", "ドリンクが更新されました");
+		attributes.addFlashAttribute("message", "ユーザーが更新されました");
 		//PRGパターン
 		return "redirect:/users";
 	}

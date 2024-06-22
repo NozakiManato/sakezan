@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 			if (order != null) {
 				int ideal_stock = (isWeekend || isHoliday) ? order.getIdeal_stock_weekend() : order.getIdeal_stock_weekday();
 				double currentStock = order.getStock();
-				int order_quantity = (int)(ideal_stock - currentStock + 0.5);
+				int order_quantity = (int)(ideal_stock - currentStock + 0.7);
 				//計算したドリンクと在庫数をorderクラスに格納し、登録する
 				if (order_quantity > 0) {
 					order.setOrder_quantity(order_quantity);
