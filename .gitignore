@@ -6,7 +6,7 @@ build/
 !**/src/test/**/build/
 
 
-application.properties
+*.properties
 keystore.p12
 ### STS ###
 .apt_generated
