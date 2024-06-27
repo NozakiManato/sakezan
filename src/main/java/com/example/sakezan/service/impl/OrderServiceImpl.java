@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void placeOrder(List<Order> orders) {
 		//発注日は前日なので明日の理想在庫数テーブルを参照するようにする
-		LocalDateTime orderDate = LocalDateTime.now().plus(1, ChronoUnit.DAYS);
+		LocalDateTime orderDate = LocalDateTime.now().plus(1, ChronoUnit.DAYS).minus(2, ChronoUnit.HOURS);
 		LocalDate localDate = orderDate.toLocalDate();
 		boolean isWeekend = localDate.getDayOfWeek() == DayOfWeek.FRIDAY || localDate.getDayOfWeek() == DayOfWeek.SATURDAY;
 		boolean isHoliday = HolidayUtil.isHoliday(localDate);
