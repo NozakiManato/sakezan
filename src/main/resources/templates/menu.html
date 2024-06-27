@@ -8,19 +8,25 @@
 <!--Bootstrap CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" th:href="@{css/style.css}" />
+<!--google font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="mt-5">メニュ－画面</h2>
-				<div th:text="${#authentication.principal.displayname}">
-					新たに追加したdisplayname値に書き換わる
-				</div>
+				<div>[[${#authentication.principal.displayname}]]さん、お疲れ様です！</div>
+				<div>例外酒残は、平日なのに週末並みの予約だった場合に使ってください</div>
 				<div class="button-container">
 					<a th:href="@{/orders}" class="button-item">
                        <div>酒残へ</div>
                     </a>
+                    <a th:href="@{/exeptionOrders}" class="button-item">
+						<div>例外酒残へ</div>
+					</a>
                     <a th:href="@{/items}" class="button-item">
                         <div>ドリンク一覧へ</div>
                     </a>

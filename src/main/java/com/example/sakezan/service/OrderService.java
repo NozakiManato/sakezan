@@ -14,6 +14,10 @@ public interface OrderService {
 	 */
 	void placeOrder(List<Order> orders);
 	/**
+	 * 例外発注を行う
+	 */
+	void exeptionPlaceOrder(List<Order> orders);
+	/**
 	 * 税率計算する
 	 */
 	int calculateAmount(Order order);

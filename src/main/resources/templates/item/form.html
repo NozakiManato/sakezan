@@ -6,6 +6,11 @@
 <title>Drinkフォーム</title>
 <!--Bootstrap CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{css/style.css}" />
+<!--google font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -24,7 +29,7 @@
 							<th>ドリンクコード</th>
 							<td><input type="text" th:field="*{item_code}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('item_code')}"
-									th:errors="*{item_code}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{item_code}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -33,7 +38,7 @@
 							<td>
 								<input type="text" th:field="*{drink_name}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('drink_name')}"
-									th:errors="*{drink_name}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{drink_name}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -42,7 +47,7 @@
 							<td>
 								<input type="text" th:field="*{specification}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('specification')}"
-									th:errors="*{specification}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{specification}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -51,7 +56,7 @@
 							<td>
 								<input type="text" th:field="*{price}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('price')}"
-									th:errors="*{price}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{price}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -60,7 +65,7 @@
 							<td>
 								<input type="text" th:field="*{stock}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('stock')}"
-									th:errors="*{stock}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{stock}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -69,7 +74,7 @@
 							<td>
 								<input type="text" th:field="*{order_quantity}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('order_quantity')}"
-									th:errors="*{order_quantity}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{order_quantity}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>
@@ -93,7 +98,7 @@
 									<option th:value="SOFT_DRINK" th:text="#{SOFT_DRINK}"></option>
 								</select>
 								<span th:if="${#fields.hasErrors('drink_category')}"
-									th:errors="*{drink_category}" class="alert alert-danger" role="alert">エラーがあれば表示
+									th:errors="*{drink_category}" class="text-danger" role="alert">エラーがあれば表示
 								</span>
 							</td>
 						</tr>

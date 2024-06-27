@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>従業員フォーム</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{css/style.css}" />
+<!--google font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -20,7 +25,7 @@
 							<th>名前</th>
 							<td><input type="text" th:field="*{displayname}" class="form-control">
 								<span th:if="${#fields.hasErrors('displayname')}"
-									th:errors="*{displayname}" class="alert alert-danger" role="alert">
+									th:errors="*{displayname}" class="text-danger" role="alert">
 									エラーがあれば表示
 								</span>
 							</td>
@@ -29,7 +34,7 @@
 							<th>ユーザーネーム</th>
 							<td><input type="text" th:field="*{usernameInput}" class="form-control">
 								<span th:if="${#fields.hasErrors('usernameInput')}"
-								th:errors="*{usernameInput}" class="alert alert-danger" role="alert">
+								th:errors="*{usernameInput}" class="text-danger" role="alert">
 									エラーがあれば表示
 								</span>
 							</td>
@@ -38,7 +43,7 @@
 							<th>パスワード</th>
 							<td><input type="text" th:field="*{passwordInput}" class="form-control">
 								<span th:if="${#fields.hasErrors('passwordInput')}"
-								th:errors="*{passwordInput}" class="alert alert-danger" role="alert">
+								th:errors="*{passwordInput}" class="text-danger" role="alert">
 									エラーがあれば表示
 								</span>
 							</td>
@@ -51,7 +56,7 @@
 									<option value="ADMIN" th:text="#{ADMIN}">ADMIN</option>
 								</select>
 								<span th:if="${#fields.hasErrors('authority')}"
-									th:errors="*{authority}" class="alert alert-danger" role="alert">
+									th:errors="*{authority}" class="text-danger" role="alert">
 									エラーがあれば表示
 								</span>
 							</td>

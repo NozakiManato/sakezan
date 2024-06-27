@@ -46,12 +46,12 @@ public class OrderServiceImpl implements OrderService {
 				double currentStock = order.getStock();
 				int order_quantity = (int)(ideal_stock - currentStock + 0.7);
 				//計算したドリンクと在庫数をorderクラスに格納し、登録する
-				if (order_quantity > 0) {
+				if (order_quantity >= 0) {
 					order.setOrder_quantity(order_quantity);
 					order.setStock((double)(currentStock + order_quantity));
 					ordersMapper.update(order);
 				} else {
-					order.setOrder_quantity(order_quantity);
+					order.setOrder_quantity(0);
 					order.setStock(currentStock);
 					ordersMapper.update(order);
 				}
@@ -61,6 +61,32 @@ public class OrderServiceImpl implements OrderService {
 			}
 		}
 	}
+	
+	@Override
+	public void exeptionPlaceOrder(List<Order> orders) {
+		// TODO 自動生成されたメソッド・スタブ
+		for (Order order : orders) {
+			if (order != null) {
+				int ideal_stock =  order.getIdeal_stock_weekend();
+				double currentStock = order.getStock();
+				int order_quantity = (int)(ideal_stock - currentStock + 0.7);
+				//計算したドリンクと在庫数をorderクラスに格納し、登録する
+				if (order_quantity > 0) {
+					order.setOrder_quantity(order_quantity);
+					order.setStock((double)(currentStock + order_quantity));
+					ordersMapper.update(order);
+				} else {
+					order.setOrder_quantity(0);
+					order.setStock(currentStock);
+					ordersMapper.update(order);
+				}
+				//各注文の小計を計算
+				int amount = calculateAmount(order);
+				order.setAmount(amount);
+			}
+		}
+	}
+	
 	
 	@Override
 	public List<Order> findOrder() {
@@ -90,4 +116,5 @@ public class OrderServiceImpl implements OrderService {
                 return 0.0;
         }
     }
+
 }
