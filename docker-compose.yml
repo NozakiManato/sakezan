@@ -1,0 +1,33 @@
+version: '3'
+services:
+  postgres000ex1:
+    image: postgres:15-alpine
+    networks:
+      - spring000net1
+    volumes:
+      - postgres000vol1:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  spring000ex2:
+    depends_on:
+      - postgres000ex1
+    image: sakezan-app:1.0.0
+    networks:
+      - spring000net1
+    ports:
+      - 8081:8080
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+
+networks:
+  spring000net1:
+
+volumes:
+  postgres000vol1:
+  spring000vol2:
