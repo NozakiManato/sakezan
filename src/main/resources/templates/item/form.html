@@ -26,6 +26,14 @@
 					<input type="hidden" th:field="*{id}">
 					<table class="table table-striped">
 						<tr>
+							<th>残数順番ID</th>
+							<td><input type="text" th:field="*{quantity_id}" class="form-control"/>
+								<span th:if="${#fields.hasErrors('quantity_id')}"
+									th:errors="*{quantity_id}" class="text-danger" role="alert">エラーがあれば表示
+								</span>
+							</td>
+						</tr>
+						<tr>
 							<th>ドリンクコード</th>
 							<td><input type="text" th:field="*{item_code}" class="form-control"/>
 								<span th:if="${#fields.hasErrors('item_code')}"

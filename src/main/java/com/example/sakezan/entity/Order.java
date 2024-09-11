@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 public class Order {
 	/** ID */
 	private Integer id;
+	/** 残数を数える時のID */
+	private Integer quantity_id;
 	/** ドリンクの商品コード */
 	private String item_code;
 	/** ドリンクの名前 */

@@ -24,6 +24,7 @@
 						<tr>
 							<th>商品名</th>
 							<th>単価</th>
+							<th>残数</th>
 							<th>発注数</th>
 							<th>小計</th>
 						</tr>
@@ -32,6 +33,7 @@
 						<tr th:each="order : ${orderForm.orders}">
 							<td th:text="${order.drink_name}"></td>
 							<td th:text="${order.price}"></td>
+							<td th:text="${order.stock}"></td>
 							<td th:text="${order.order_quantity}"></td>
 							<td th:text="${order.amount}"></td>
 						</tr>

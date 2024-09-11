@@ -32,6 +32,8 @@
 						<tr>
 							<th>ID</th>
 							<th>名前</th>
+							<th>平日の理想在庫数</th>
+							<th>休日の理想在庫数</th>
 							<th>詳細</th>
 						</tr>
 					</thead>
@@ -39,6 +41,8 @@
 						<tr th:each="item :${items}">
 							<td th:text="${item.id}"></td>
 							<td	th:text="${item.drink_name}"></td>
+							<td th:text="${item.ideal_stock_weekday}"></td>
+							<td th:text="${item.ideal_stock_weekend}"></td>
 							<td>
 								<a th:href="@{/items/{id}(id=${item.id})}" class="link-primary">
 									詳細

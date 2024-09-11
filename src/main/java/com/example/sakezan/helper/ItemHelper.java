@@ -13,6 +13,7 @@ public class ItemHelper {
 	public static Item convertItem(ItemForm form) {
 		Item item = new Item();
 		item.setId(form.getId());
+		item.setQuantity_id(form.getQuantity_id());
 		item.setItem_code(form.getItem_code());
 		item.setDrink_name(form.getDrink_name());
 		item.setSpecification(form.getSpecification());
@@ -32,6 +33,7 @@ public class ItemHelper {
 		ItemForm form = new ItemForm();
 		form.setId(item.getId());
 		form.setItem_code(item.getItem_code());
+		form.setQuantity_id(item.getQuantity_id());
 		form.setDrink_name(item.getDrink_name());
 		form.setSpecification(item.getSpecification());
 		form.setPrice(item.getPrice());

@@ -1,6 +1,5 @@
 -- テーブルが存在したら削除する
 DROP TABLE IF EXISTS items CASCADE;
-DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS authentications CASCADE;
 DROP TYPE IF EXISTS role CASCADE;
 DROP TYPE IF EXISTS drink_category CASCADE;
@@ -12,6 +11,8 @@ CREATE TYPE drink_category AS ENUM ('ALCOHOL', 'SOFT_DRINK');
 CREATE TABLE items (
 	--id(することID):主キー
 	id serial PRIMARY KEY,
+	-- quantity_id(残数フォームのID)
+	quantity_id INT NOT NUll UNIQUE,
     -- item_code(ドリンクの商品コード)
     item_code CHAR(6) NOT NULL,
     -- drink_name(ドリンクの名前):NULL不許可

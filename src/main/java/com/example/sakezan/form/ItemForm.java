@@ -24,6 +24,9 @@ public class ItemForm {
 	//item_codeではなく、drink_codeに変える
 	@Pattern(regexp = "\\d{6}", message = "商品コードは６文字の数字でなければなりません")
 	private String item_code;
+	/** 残数を数える時のID */
+	@NotNull(message="残数を数える時の順番IDは必須です")
+	private Integer quantity_id;
 	/** ドリンクの名前 */
 	@NotBlank(message = "ドリンク名は必須です")
 	private String drink_name;
