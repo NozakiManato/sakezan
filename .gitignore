@@ -11,7 +11,7 @@ application-product.properties
 application.properties
 application-develop.properties
 keystore.p12
-
+docker-keystore.p12
 ### STS ###
 .apt_generated
 .classpath
