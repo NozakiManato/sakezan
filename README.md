@@ -18,6 +18,7 @@
   - EC2
   - RDS
   - Route53
+- Docker
 
 ## 機能一覧
 - ログイン機能(Spring Security)
